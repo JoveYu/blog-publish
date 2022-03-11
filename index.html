@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.jove.im","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Jove&#39;s Blog">
+<meta property="og:url" content="https://blog.jove.im/index.html">
+<meta property="og:site_name" content="Jove&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Jove">
+<meta property="article:tag" content="技术 python go c">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.jove.im/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Jove's Blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?6c2cc1c678e9474abfd3dfee7ccb4a58"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Jove's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love what I do</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jove</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JoveYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JoveYu" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/joveyu" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;joveyu" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Jove_Yu" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Jove_Yu" rel="noopener" target="_blank"><i class="twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JoveYu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/05/asyncio-common-misunderstandings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2020/05/asyncio-common-misunderstandings/" class="post-title-link" itemprop="url">asyncio常见误区</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-25 10:53:03" itemprop="dateCreated datePublished" datetime="2020-05-25T10:53:03+08:00">2020-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 16:31:38" itemprop="dateModified" datetime="2022-03-11T16:31:38+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>现在到了python3.8，标准库中有很多方式可以去实现，异步并发的编程模式，比如</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/_thread.html">_thread</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/threading.html">threading</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/multiprocessing.html">multiprocessing</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/asyncio.html">asyncio</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/concurrent.futures.html">concurrent.futures</a></li>
+</ul>
+<p>当然还有一些优秀第三方库，也是不错的选择，这些库都是python2里的佼佼者，比如</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.tornadoweb.org/en/stable/">tornado</a> 目前已经兼容asyncio</li>
+<li><a target="_blank" rel="noopener" href="http://www.gevent.org/">gevent</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2020/05/asyncio-common-misunderstandings/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/04/cl0m4bmfh001dehkr7lwjhtaq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2020/04/cl0m4bmfh001dehkr7lwjhtaq/" class="post-title-link" itemprop="url">Dell服务器调整风扇转速降低噪音</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-04 06:13:49" itemprop="dateCreated datePublished" datetime="2020-04-04T06:13:49+08:00">2020-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">服务器</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近购入一台Dell r720服务器，放在家里做试验机，之前考虑了很久，调研了网上的一些说法，主要顾虑有两点，噪音和能耗，能耗这个没办法，干多少活用多少电，噪音这个就要好好考虑下吧，</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>收到机器，安装好系统，开始研究如何降低机器噪音在家里正常使用，查看网上类似的需求，主要攻克的方向有两个。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2020/04/cl0m4bmfh001dehkr7lwjhtaq/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/03/cl0m4bmhl00aaehkr84686q11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2020/03/cl0m4bmhl00aaehkr84686q11/" class="post-title-link" itemprop="url">etcd-operator简单体验</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-16 12:36:12" itemprop="dateCreated datePublished" datetime="2020-03-16T12:36:12+08:00">2020-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="operator"><a href="#operator" class="headerlink" title="operator"></a>operator</h2><blockquote>
+<p> Operator是指一类基于Kubernetes自定义资源对象(CRD)和控制器(Controller)的云原生拓展服务，其中CRD定义了每个operator所创建和管理的自定义资源对象，Controller则包含了管理这些对象所相关的运维逻辑代码。</p>
+</blockquote>
+<p>operator主要是为了管理有状态服务的一种方式，可以理解分为存储和控制两部分：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2020/03/cl0m4bmhl00aaehkr84686q11/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/03/cl0m4bmhm00aiehkr04482g6x/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2020/03/cl0m4bmhm00aiehkr04482g6x/" class="post-title-link" itemprop="url">etcd-operator创建集群单实例问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-06 10:12:50" itemprop="dateCreated datePublished" datetime="2020-03-06T10:12:50+08:00">2020-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最新在新搭建的测试集群测试etcd-operator的过程中，发现一个诡异的问题，表象是，新建etcd集群的时候无论size设置多少，都只会产生一个etcd节点实例，也就是一个pod，这点和预期差距很大，问题出现在哪呢</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2020/03/cl0m4bmhm00aiehkr04482g6x/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/03/cl0m4bmht00baehkr7irf2tnc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2020/03/cl0m4bmht00baehkr7irf2tnc/" class="post-title-link" itemprop="url">安装测试kubernetes集群</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-04 02:42:40" itemprop="dateCreated datePublished" datetime="2020-03-04T02:42:40+08:00">2020-03-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天需要搭建一个简单的测试k8s集群，简单记录下流程</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2020/03/cl0m4bmht00baehkr7irf2tnc/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2019/03/cl0m4bmhx00byehkr5sa3h0zr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2019/03/cl0m4bmhx00byehkr5sa3h0zr/" class="post-title-link" itemprop="url">迅雷极速版解除版权限制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-27 10:23:00" itemprop="dateCreated datePublished" datetime="2019-03-27T10:23:00+08:00">2019-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>迅雷如今已经变成迅雷浏览器了（迅雷9）</p>
+<p>我还一直在用迅雷极速版，简直是业界良心：</p>
+<ol>
+<li>下载速度拉满，同时对比迅雷9，迅雷9就没有速度，不知道是不是限速了</li>
+<li>界面清爽没有广告</li>
+<li>专注下载，没有其他额外功能</li>
+</ol>
+<p>不难看出在那个时期公司内部还是有一批人专心做产品的，可是后期由于商业化不足被迫转型。</p>
+<p>回到正题，最近使用过程中，下美剧，经常有显示版权受限，确实挺头疼<br>在网上终于找到了解决办法，分享给大家，原理就是通过hosts屏蔽部分连续迅雷服务器的请求</p>
+<p>只需要hosts添加如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 hub5btmain.sandai.net</span><br><span class="line">127.0.0.1 hub5emu.sandai.net</span><br><span class="line">127.0.0.1 upgrade.xl9.xunlei.com</span><br></pre></td></tr></table></figure>
+
+<p>理论上就可以，先用着吧，貌似没有什么好的替代工具</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2014/05/cl0m4bmhs00b6ehkrhrd6gddf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2014/05/cl0m4bmhs00b6ehkrhrd6gddf/" class="post-title-link" itemprop="url">博客迁移记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2014-05-17 20:49:10" itemprop="dateCreated datePublished" datetime="2014-05-17T20:49:10+08:00">2014-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>说起我的小博客的历史啊真的很久了。最早之前是在10年暑假，那时候自己学习ACM，在POJ上面做题目。每天都做几道，当时想着把好不容易把这些题目写出来，到时过不了多久在看到的时候就忘了，这样多浪费啊，于是我开始谋划我的博客，当时wordpress很火，我也就开始了我的博客生涯，买了个90元的博客主机，买了个域名，开始了我的做题笔记。</p>
+<!-- TEASER_END -->
+
+<p>后来在12年的时候，那时学习python，准备往web方向走，虽然django的文档还是很多，但是必定需要一个实际项目入手，我决定将我的博客重写，于是用django实现了一个版本，写出第一版后就没怎么改过了，现在在去看我当时写的代码，真的是很不规范,很多代码现在我都看不下去，不过必定是我的一个作品，呵呵。具体项目在<a target="_blank" rel="noopener" href="https://github.com/JoveYu/JoveSky">JoveSky</a>，虽然这是我的地一个django项目，但是相对来说很多功能都实现了，当初选择markdown作为书写格式，也为这次迁移减少了很多麻烦。</p>
+<p>当初python的那个版本，一直挂在我朋友的SAE上，也就一直没要钱，但是不知道怎么回事，速度很不稳定，后来想想，其实我的博客，真的也只有文字，那么还是专注于写作吧，于是我选择了使用静态博客。既然是静态博客，当然要找一个python写的了，（不行就自己写个，^_^）</p>
+<p>搜索了半天，找到了python的wiki,<a target="_blank" rel="noopener" href="https://wiki.python.org/moin/StaticSiteGenerator">https://wiki.python.org/moin/StaticSiteGenerator</a></p>
+<p>简单看了下有一些不错的，其中我比较有名的是Pelican，但是他的模板渲染用的是jinja2,这个我不是很熟，最近跟转到后台那边去了，也正好在用mako，所以想找个mako模板的后面我该起自己的主题也方便一些，最后找了半天选择了Nikola，选择他书要有3个原因</p>
+<ol>
+<li>调试方便，自带开发服务器，还可以通过插件实现实时检测文件变化。</li>
+<li>方便部署到github page，他提供了一个自动化部署的命令，我看了下源码，就是帮你执行了一些命令，向我这样的自然要偷懒。</li>
+<li>模板嵌套不错，我看了下他的默认模板，写的非常不错，我没看过别的，也不知道应该是什么水平，不过看着顺眼就好。</li>
+</ol>
+<h2 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h2><h3 id="迁移文章"><a href="#迁移文章" class="headerlink" title="迁移文章"></a>迁移文章</h3><p>我之前django博客中，是用markdown来书写，所有文章都在数据库内，现在要都迁移出md文件，首先我去SAE中的数据库导出，其实可以到处成XML或这YAML但是我没这么麻烦，直接到处成SQL，然后导入了我本地的mysql，自己书写了个脚本来完成将文章变成文件的工作。简单晒下我的脚本吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">conn = MySQLdb.connect(host=<span class="string">&#x27;127.0.0.1&#x27;</span>,user=<span class="string">&#x27;qf&#x27;</span>,passwd=<span class="string">&#x27;123456&#x27;</span>,charset=<span class="string">&#x27;utf8&#x27;</span> )</span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line">conn.select_db(<span class="string">&#x27;qf_core&#x27;</span>)</span><br><span class="line"></span><br><span class="line">count = cur.execute(<span class="string">&#x27;select title,slug,create_time,markdown from blog_post&#x27;</span>)</span><br><span class="line"></span><br><span class="line">result=cur.fetchall()</span><br><span class="line"></span><br><span class="line">template = <span class="string">&quot;&quot;&quot;&lt;!--</span></span><br><span class="line"><span class="string">.. title: %s</span></span><br><span class="line"><span class="string">.. slug: %s</span></span><br><span class="line"><span class="string">.. date: %s+08:00</span></span><br><span class="line"><span class="string">.. tags:</span></span><br><span class="line"><span class="string">.. link:</span></span><br><span class="line"><span class="string">.. description:</span></span><br><span class="line"><span class="string">.. type: text</span></span><br><span class="line"><span class="string">--&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> result:</span><br><span class="line">    title = r[<span class="number">0</span>]</span><br><span class="line">    slug = r[<span class="number">1</span>]</span><br><span class="line">    time = r[<span class="number">2</span>]</span><br><span class="line">    markdown = r[<span class="number">3</span>]</span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">&#x27;%s.md&#x27;</span>%title,<span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    f.write(unicode.encode(template%(title,slug,time.strftime(<span class="string">&#x27;%Y-%m-%dT%H:%M:%S&#x27;</span>)),<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    f.write(unicode.encode(markdown,<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样我们就看到了一文件夹的文章，python做这种小工具真心简单。</p>
+<h3 id="集成多说评论"><a href="#集成多说评论" class="headerlink" title="集成多说评论"></a>集成多说评论</h3><p>之前我所有的系统都是使用多说评论，无论是我的wordpress还是django，多说做的是真不错，但是这个框架必定是老外写的，其中集成了disqus，我参考disqus的实现将多说集成进去，找到源码中的comments_helper_disqus.tmpl，参考他我完成了comments_helper_duoshuo.tmpl源码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">## -*- coding: utf-8 -*-</span><br><span class="line">&lt;%def name=&quot;comment_form(url, title, identifier)&quot;&gt;</span><br><span class="line">    %if comment_system_id:</span><br><span class="line">        &lt;!-- 多说评论框 start --&gt;</span><br><span class="line">            &lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;$&#123;identifier&#125;&quot; data-title=&quot;$&#123;title&#125;&quot; data-url=&quot;$&#123;url&#125;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;!-- 多说评论框 end --&gt;</span><br><span class="line">        &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var duoshuoQuery = &#123;short_name:&quot;$&#123;comment_system_id&#125;&quot;&#125;;</span><br><span class="line">            (function() &#123;</span><br><span class="line">                var ds = document.createElement(&#x27;script&#x27;);</span><br><span class="line">                ds.type = &#x27;text/javascript&#x27;;ds.async = true;</span><br><span class="line">                ds.src = (document.location.protocol == &#x27;https:&#x27; ? &#x27;https:&#x27; : &#x27;http:&#x27;) + &#x27;//static.duoshuo.com/embed.js&#x27;;</span><br><span class="line">                ds.charset = &#x27;UTF-8&#x27;;</span><br><span class="line">                (document.getElementsByTagName(&#x27;head&#x27;)[0] </span><br><span class="line">                 || document.getElementsByTagName(&#x27;body&#x27;)[0]).appendChild(ds);</span><br><span class="line">            &#125;)();</span><br><span class="line">            &lt;/script&gt;</span><br><span class="line">        &lt;!-- 多说公共JS代码 end --&gt;</span><br><span class="line">    %endif</span><br><span class="line">&lt;/%def&gt;</span><br><span class="line"></span><br><span class="line">&lt;%def name=&quot;comment_link(link, identifier)&quot;&gt;</span><br><span class="line">    %if comment_system_id:</span><br><span class="line">    &lt;a href=&quot;$&#123;link&#125;#ds-thread&quot;&gt;Comments&lt;/a&gt;</span><br><span class="line">    %endif</span><br><span class="line">&lt;/%def&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;%def name=&quot;comment_link_script()&quot;&gt;</span><br><span class="line">    %if comment_system_id:</span><br><span class="line">    %endif</span><br><span class="line">&lt;/%def&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>其实这个最好的部署环境是github page，但是大天朝你懂得，好在国内有很多良心企业，比如托总的gitcafe，稍微修改了下，我就将整个博客部署到上去</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>博客是我技术的一个载体，真的记载了我从开始接触真正的技术到后来的练习的过程，我博客的变迁，也是我成熟的过程，我相信我的小博客不会就这么接触，也许还会有下一次迁移，倒是折腾吧！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/09/cl0m4bmfk001lehkrb9at8xo4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/09/cl0m4bmfk001lehkrb9at8xo4/" class="post-title-link" itemprop="url">JSON与JSONP分析，含调用实例</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-09-28 08:04:47" itemprop="dateCreated datePublished" datetime="2013-09-28T08:04:47+08:00">2013-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>AJAX是目前web开发少不了的环节，在很多时候不仅仅是get或者post数据，更重要的是要得到返回的数据，在我所开发的项目中大部分推崇的都是使用json作为返回格式，不仅在webapi上调用方便，在客户端上也有各种解析库！</p>
+<p>作为一个web新手，逐渐使用AJAX频繁，也就自然而然的遇到了AJAX的跨域问题，这个时候我遇到了jsonp，仅仅多了一个字，不难看出他的本质还是json，但是他能够完成我们头疼的跨域问题</p>
+<p>这篇文章就是用来解释这样一个问题，json和jsonp有什么区别，jsonp怎么调用，如果你是个web老手完全可以去冲咖啡了，刚刚学习，以此为记！没有什么人指点，可能很多都是我的个人见解。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/2013/09/cl0m4bmfk001lehkrb9at8xo4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/09/cl0m4bmhj00a4ehkr5k85d7d7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/09/cl0m4bmhj00a4ehkr5k85d7d7/" class="post-title-link" itemprop="url">django智能分页函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-09-14 14:44:24" itemprop="dateCreated datePublished" datetime="2013-09-14T14:44:24+08:00">2013-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>django中提供便捷的分页服务，主要通过<br>Pagination来实现的，详细可以参考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.5/topics/pagination/">Django文档</a>，通过简单设立每页显示的数量，来自动化获得分页object_list，先来看看调用方式，借用文档里面的例子：</p>
+<!-- TEASER_END -->
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>objects = [<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;paul&#x27;</span>, <span class="string">&#x27;george&#x27;</span>, <span class="string">&#x27;ringo&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Paginator(objects, <span class="number">2</span>)<span class="comment">#新建分页，参数为所有的obj，和每页显示数量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.count<span class="comment">#所有的obj的数量</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.num_pages<span class="comment">#分出来的页数</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.page_range<span class="comment">#页数的列表</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1 = p.page(<span class="number">1</span>)<span class="comment">#得到第一页</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1</span><br><span class="line">&lt;Page <span class="number">1</span> of <span class="number">2</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1.object_list<span class="comment">#第一页的obj列表</span></span><br><span class="line">[<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;paul&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2 = p.page(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.object_list</span><br><span class="line">[<span class="string">&#x27;george&#x27;</span>, <span class="string">&#x27;ringo&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_next()<span class="comment">#是否有下一页</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_previous()<span class="comment">#是否有前一页</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_other_pages()<span class="comment">#是否有其他页</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.next_page_number()<span class="comment">#下一页的地址，这里最好判断是否有，不然会异常</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">...</span><br><span class="line">EmptyPage: That page contains no results</span><br></pre></td></tr></table></figure>
+
+<p>其实分页并不是一个复杂的流程，但是我跟喜欢使用官方提供的功能，省的自己浪费没有必要的时间，但是在使用的过程中，还是优点满足不了我们的用途，一般写导航的时候都会显示当前页前后3-4也的导航，向这样的：</p>
+<p><img src="https://jovesky4django-uploads.stor.sinaapp.com/2013/09/pagination.png" alt="导航" title="pagination"></p>
+<p>而我们仅仅能得到一个所有的列表，加之每次都要在模板里配置嫌多判断，前不久学习了一种好的写法，稍微改造了下，封装了下，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_pagination</span>(<span class="params">request, queryset, display_amount=<span class="number">15</span>, after_range_num = <span class="number">5</span>,bevor_range_num = <span class="number">4</span></span>):</span><br><span class="line">    <span class="comment">#按参数分页</span></span><br><span class="line">    paginator = Paginator(queryset, display_amount)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#得到request中的page参数</span></span><br><span class="line">        page =<span class="built_in">int</span>(request.GET.get(<span class="string">&#x27;page&#x27;</span>))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="comment">#默认为1</span></span><br><span class="line">        page = <span class="number">1</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#尝试获得分页列表</span></span><br><span class="line">        objects = paginator.page(page)</span><br><span class="line">    <span class="comment">#如果页数不存在</span></span><br><span class="line">    <span class="keyword">except</span> EmptyPage:</span><br><span class="line">        <span class="comment">#获得最后一页</span></span><br><span class="line">        objects = paginator.page(paginator.num_pages)</span><br><span class="line">    <span class="comment">#如果不是一个整数</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="comment">#获得第一页</span></span><br><span class="line">        objects = paginator.page(<span class="number">1</span>)</span><br><span class="line">    <span class="comment">#根据参数配置导航显示范围</span></span><br><span class="line">    <span class="keyword">if</span> page &gt;= after_range_num:</span><br><span class="line">        page_range = paginator.page_range[page-after_range_num:page+bevor_range_num]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_range = paginator.page_range[<span class="number">0</span>:page+bevor_range_num]</span><br><span class="line">    <span class="keyword">return</span> objects,page_range</span><br></pre></td></tr></table></figure>
+<p>在模板中配套加入代码，这个模板使用bootstrap应该很好理解</p>
+<p>分页出来的数据处理，像这样写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if objects.object_list %&#125;</span><br><span class="line">    &#123;% for p in objects.object_list %&#125;</span><br><span class="line">    ...</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在下面加入导航</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;pagination pagination-centered&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &#123;% if objects.has_previous %&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; objects.previous_page_number &#125;&#125;&quot;&gt;前一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">    &lt;li class=&quot;active&quot;&gt;&lt;a&gt;前一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% for p in page_range %&#125;</span><br><span class="line">      &#123;% ifequal p objects.number %&#125;</span><br><span class="line">      &lt;li class=&quot;active&quot;&gt;&lt;a&gt;&#123;&#123;p&#125;&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123;p&#125;&#125;&quot; title=&quot;第&#123;&#123;p&#125;&#125;页&quot;&gt;&#123;&#123;p&#125;&#125;&lt;/a&gt;&lt;li&gt;</span><br><span class="line">      &#123;% endifequal %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% if objects.has_next %&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; objects.next_page_number &#125;&#125;&quot;&gt;后一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">    &lt;li class=&quot;active&quot;&gt; &lt;a&gt;后一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>大家可能还关心view怎么写，给一个简单的示例吧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_view</span>(<span class="params">request</span>):</span><br><span class="line">    all_objects = some_model.objects.<span class="built_in">all</span>()</span><br><span class="line">    objects, page_range = my_pagination(request, all_objects)</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">&#x27;a_template.html&#x27;</span>,&#123;<span class="string">&#x27;objects&#x27;</span>:objects,<span class="string">&#x27;page_range&#x27;</span>:page_range&#125;,context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure>
+
+<p>简单来说下这样写的好处，一方面不用关心处理的逻辑，一方面不需要对模板进行特殊处理，将request传进去，连page参数都不用操心，相信这样的一个分页函数能帮到你！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/07/cl0m4bmhk00a8ehkr2orl1yby/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/07/cl0m4bmhk00a8ehkr2orl1yby/" class="post-title-link" itemprop="url">django默认admin中Group添加选择User界面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-07-28 13:46:42" itemprop="dateCreated datePublished" datetime="2013-07-28T13:46:42+08:00">2013-07-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 15:48:50" itemprop="dateModified" datetime="2022-03-11T15:48:50+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>django中的auth一般人都会用到不管是用他进入后台，还是自定义User model来实现用户管理，这都比必用的app，然后在使用中有一点很不方便，这两天研究了下，一般办法都是利用form解决的！但是苦于一直找不到想权限那样合适的控件！今天一个碰巧的情况解决了这些问题，不多说，重写groupadmin的form</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.contrib.admin.widgets <span class="keyword">import</span> FilteredSelectMultiple</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.admin <span class="keyword">import</span> GroupAdmin</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> Group,User</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GroupAdminForm</span>(forms.ModelForm):</span><br><span class="line">    users = forms.ModelMultipleChoiceField(queryset=User.objects.<span class="built_in">all</span>(),</span><br><span class="line">                                           widget=FilteredSelectMultiple(<span class="string">&#x27;Users&#x27;</span>, <span class="literal">False</span>),</span><br><span class="line">                                           required=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Group</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        instance = kwargs.get(<span class="string">&#x27;instance&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            initial = kwargs.get(<span class="string">&#x27;initial&#x27;</span>, &#123;&#125;)</span><br><span class="line">            initial[<span class="string">&#x27;users&#x27;</span>] = instance.user_set.<span class="built_in">all</span>()</span><br><span class="line">            kwargs[<span class="string">&#x27;initial&#x27;</span>] = initial</span><br><span class="line">        <span class="built_in">super</span>(GroupAdminForm, self).__init__(*args, **kwargs)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">save</span>(<span class="params">self, commit=<span class="literal">True</span></span>):</span><br><span class="line">        group = <span class="built_in">super</span>(GroupAdminForm, self).save(commit=commit)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> commit:</span><br><span class="line">            group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            old_save_m2m = self.save_m2m</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">new_save_m2m</span>():</span><br><span class="line">                old_save_m2m()</span><br><span class="line">                group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">            self.save_m2m = new_save_m2m</span><br><span class="line">        <span class="keyword">return</span> group</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyGroupAdmin</span>(<span class="title class_ inherited__">GroupAdmin</span>):</span><br><span class="line">    form = GroupAdminForm</span><br><span class="line"></span><br><span class="line">admin.site.unregister(Group)</span><br><span class="line">admin.site.register(Group, MyGroupAdmin)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jove</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"JoveYu","repo":"gitalk","client_id":"597faed5eb8de9690a69","client_secret":"6569beeeefaae9be50ac39b037beb280088ccf20","admin_user":"JoveYu","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d1546d731a9f30cc80127d57142a482b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

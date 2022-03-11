@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.jove.im","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="现在到了python3.8，标准库中有很多方式可以去实现，异步并发的编程模式，比如  _thread threading multiprocessing asyncio concurrent.futures  当然还有一些优秀第三方库，也是不错的选择，这些库都是python2里的佼佼者，比如  tornado 目前已经兼容asyncio gevent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="asyncio常见误区">
+<meta property="og:url" content="https://blog.jove.im/post/2020/05/asyncio-common-misunderstandings/index.html">
+<meta property="og:site_name" content="Jove&#39;s Blog">
+<meta property="og:description" content="现在到了python3.8，标准库中有很多方式可以去实现，异步并发的编程模式，比如  _thread threading multiprocessing asyncio concurrent.futures  当然还有一些优秀第三方库，也是不错的选择，这些库都是python2里的佼佼者，比如  tornado 目前已经兼容asyncio gevent">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-25T02:53:03.000Z">
+<meta property="article:modified_time" content="2022-03-11T08:31:38.494Z">
+<meta property="article:author" content="Jove">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="asyncio">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.jove.im/post/2020/05/asyncio-common-misunderstandings/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.jove.im/post/2020/05/asyncio-common-misunderstandings/","path":"post/2020/05/asyncio-common-misunderstandings/","title":"asyncio常见误区"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>asyncio常见误区 | Jove's Blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?6c2cc1c678e9474abfd3dfee7ccb4a58"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jove's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I love what I do</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#asyncio"><span class="nav-number">1.</span> <span class="nav-text">asyncio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8asyncio%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="nav-number">2.</span> <span class="nav-text">使用asyncio开发常见误区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E4%BD%BF%E7%94%A8asyncio%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%AF%94%E4%BC%A0%E7%BB%9F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%9B%B4%E5%BF%AB"><span class="nav-number">2.1.</span> <span class="nav-text">Q：使用asyncio编程，比传统多线程更快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E4%BD%BF%E7%94%A8async%E5%85%B3%E9%94%AE%E5%AD%97%E5%AE%9A%E4%B9%89%E7%9A%84%E5%87%BD%E6%95%B0%E5%B0%B1%E6%98%AF%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%BC%82%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.2.</span> <span class="nav-text">Q：使用async关键字定义的函数就是异步函数，可以异步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E9%82%A3%E4%B9%88%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8await"><span class="nav-number">2.3.</span> <span class="nav-text">Q：那么什么时候需要使用await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B7%BB%E5%8A%A0%E4%BA%86await%E4%BC%9A%E6%8A%A5%E9%94%99%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BA%93%E4%B8%8D%E6%94%AF%E6%8C%81await%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">2.4.</span> <span class="nav-text">Q：为什么添加了await会报错，使用的库不支持await怎么办</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E6%88%91%E9%9C%80%E8%A6%81%E5%81%9A%E4%B8%80%E4%B8%AA%E4%BA%8B%E6%83%85%EF%BC%8C%E6%A0%B9%E6%9C%AC%E6%B2%A1%E6%9C%89%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E5%BA%93%EF%BC%8C%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%90%8C%E6%AD%A5%E7%9A%84%E5%BA%93%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">2.5.</span> <span class="nav-text">Q：我需要做一个事情，根本没有异步操作库，只有一个同步的库，怎么办</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E6%89%93%E6%97%A5%E5%BF%97%E4%BC%9A%E9%98%BB%E5%A1%9E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%90%97%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">Q：打日志会阻塞事件循环吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q%EF%BC%9A%E6%88%91%E9%83%BD%E6%94%B9%E9%80%A0%E5%AE%8C%E4%BA%86%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%9A%84%E5%87%BD%E6%95%B0%E9%80%BB%E8%BE%91%E6%89%A7%E8%A1%8C%E6%97%B6%E9%97%B4%E8%BF%98%E6%98%AF%E9%82%A3%E4%B9%88%E4%B9%85"><span class="nav-number">2.7.</span> <span class="nav-text">Q：我都改造完了为什么我的函数逻辑执行时间还是那么久</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jove</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JoveYu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JoveYu" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/joveyu" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;joveyu" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Jove_Yu" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Jove_Yu" rel="noopener" target="_blank"><i class="twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/JoveYu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2020/05/asyncio-common-misunderstandings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="asyncio常见误区 | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          asyncio常见误区
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-25 10:53:03" itemprop="dateCreated datePublished" datetime="2020-05-25T10:53:03+08:00">2020-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 16:31:38" itemprop="dateModified" datetime="2022-03-11T16:31:38+08:00">2022-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>现在到了python3.8，标准库中有很多方式可以去实现，异步并发的编程模式，比如</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/_thread.html">_thread</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/threading.html">threading</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/multiprocessing.html">multiprocessing</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/asyncio.html">asyncio</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/concurrent.futures.html">concurrent.futures</a></li>
+</ul>
+<p>当然还有一些优秀第三方库，也是不错的选择，这些库都是python2里的佼佼者，比如</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.tornadoweb.org/en/stable/">tornado</a> 目前已经兼容asyncio</li>
+<li><a target="_blank" rel="noopener" href="http://www.gevent.org/">gevent</a></li>
+</ul>
+<span id="more"></span>
+
+<h2 id="asyncio"><a href="#asyncio" class="headerlink" title="asyncio"></a>asyncio</h2><blockquote>
+<p>asyncio is a library to write <strong>concurrent</strong> code using the <strong>async&#x2F;await</strong> syntax.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3.8/library/asyncio.html">https://docs.python.org/3.8/library/asyncio.html</a></p>
+</blockquote>
+<p>asyncio是python3.4引入的一个新的标准库，用来实现协程相关功能。不同于传统多进程多线程的并发方式，asyncio引入eventloop来处理异步任务的调度问题，随着python3新版本逐步完善asyncio成为了python实现异步的重要方案之一</p>
+<p>asyncio经历了几个大版本的迭代</p>
+<ul>
+<li>python3.4 <code>@asyncio.coroutine</code>和<code>yield from</code>描述一个异步函数</li>
+<li>python3.5 引入关键字<code>async</code>和<code>await</code>来替代之前装饰器的写法</li>
+<li>python3.6 核心API更加稳定，可以用于生产环境</li>
+</ul>
+<p>asyncio的核心就是一个事件循环，工作时，不停地读取待处理的事件，根据逻辑处理，然后继续循环。事件循环的方式之所以快，是由于相比多线程，减少了系统现成切换的开销，线程相关的比较后面再讨论</p>
+<h2 id="使用asyncio开发常见误区"><a href="#使用asyncio开发常见误区" class="headerlink" title="使用asyncio开发常见误区"></a>使用asyncio开发常见误区</h2><h3 id="Q：使用asyncio编程，比传统多线程更快"><a href="#Q：使用asyncio编程，比传统多线程更快" class="headerlink" title="Q：使用asyncio编程，比传统多线程更快"></a>Q：使用asyncio编程，比传统多线程更快</h3><p>A：asyncio实现的只是另一种网络并发模型，与传统的多线程模型相比，有很多优势，但是正如之前说的asyncio只能节省系统线程调度的开销，asyncio更适合大量IO并发操作的场景</p>
+<h3 id="Q：使用async关键字定义的函数就是异步函数，可以异步运行"><a href="#Q：使用async关键字定义的函数就是异步函数，可以异步运行" class="headerlink" title="Q：使用async关键字定义的函数就是异步函数，可以异步运行"></a>Q：使用async关键字定义的函数就是异步函数，可以异步运行</h3><p>A：使用async def 定义的函数确实是异步函数，但是是否可以异步执行，还是取决于函数中编写的逻辑，在异步函数中的同步逻辑还是会同步执行，阻塞整个事件循环的运行</p>
+<p>基于事件循环的异步模型，在编写时需要显示声明，上下文切换，方便eventloop去调度任务和注册回调，在asyncio中 await 就是用来声明上下文切换的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">sleep</span>():</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这个函数执行sleep由于没有显示声明，那么在执行的过程中，并不会切换去执行其他操作，整个事件循环会卡主1秒什么都不做，实际上应该这样定义</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">sleep</span>():</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在这个函数执行的时候，<code>asyncio.sleep</code>会立即返回一个awaitable的对象，这个时候eventloop注册完回调后，可以去处理其他的协程逻辑，1秒后触发回调函数，eventloop回来继续处理后续逻辑，并不影响其他协程工作</p>
+<p>理论上每一个async def的函数里面，都应该有await关键字，不然就跟同步函数没有任何区别</p>
+<h3 id="Q：那么什么时候需要使用await"><a href="#Q：那么什么时候需要使用await" class="headerlink" title="Q：那么什么时候需要使用await"></a>Q：那么什么时候需要使用await</h3><p>A：我们平常说的异步，指的是异步IO</p>
+<p>IO常用的分2类，一个是网络IO，一个是磁盘IO</p>
+<p>网络IO理解起来很简单，你的程序需要连接网络操作，无论是TCP还是UDP，或者是构建在TCP上的应用协议，比如http mysql redis协议，这些的都可能阻塞程序运行，我们在做任何网络操作的时候都需要考虑应用等待，比如http响应慢，mysql慢查询等</p>
+<p>磁盘IO也很好理解，就是程序对磁盘的读写，磁盘并不是立刻响应读写，那么在做读写操作的过程中，都会有等待延迟，目前asyncio并不支持异步磁盘读写</p>
+<p>还有一些情况，比如程序逻辑里需要运行shell命令，也不能直接使用传统的<code>subprocess</code>库，应该是使用<code>asyncio.create_subprocess_exec</code></p>
+<h3 id="Q：为什么添加了await会报错，使用的库不支持await怎么办"><a href="#Q：为什么添加了await会报错，使用的库不支持await怎么办" class="headerlink" title="Q：为什么添加了await会报错，使用的库不支持await怎么办"></a>Q：为什么添加了await会报错，使用的库不支持await怎么办</h3><p>A：asyncio整体逻辑自成一套，基本上决定了整体生态和之前同步运行的操作库无法直接兼容，asyncio发展这个多年，也诞生了不少满足asyncio标准的操作库，这些库操作方式与之前的库类似，并且支持异步调用，这里列举一些常用的</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>同步操作库</th>
+<th>异步操作库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>http请求</td>
+<td>requests</td>
+<td>Aiohttp</td>
+</tr>
+<tr>
+<td>mysql操作</td>
+<td>MysqlDB pymysql</td>
+<td>Aiomysql</td>
+</tr>
+<tr>
+<td>redis操作</td>
+<td>redis</td>
+<td>aioredis</td>
+</tr>
+</tbody></table>
+<h3 id="Q：我需要做一个事情，根本没有异步操作库，只有一个同步的库，怎么办"><a href="#Q：我需要做一个事情，根本没有异步操作库，只有一个同步的库，怎么办" class="headerlink" title="Q：我需要做一个事情，根本没有异步操作库，只有一个同步的库，怎么办"></a>Q：我需要做一个事情，根本没有异步操作库，只有一个同步的库，怎么办</h3><p>A：事实上asyncio中提供一种办法在事件循环中执行同步的函数，其原理是封装了一个线程池成一个异步执行对象，在这个线程池中执行同步的函数，然后回调事件循环来处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">sleep_async</span>(<span class="params">loop, delay</span>):</span><br><span class="line">    <span class="comment"># None 默认使用 ThreadPoolExecutor</span></span><br><span class="line">    <span class="keyword">await</span> loop.run_in_executor(<span class="literal">None</span>, time.sleep, delay)</span><br><span class="line">    <span class="comment"># 等价于</span></span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(delay, loop=loop)</span><br></pre></td></tr></table></figure>
+
+<p>目前市面上也有很多操作库，通过类似的封装来实现将现有同步的库转换成异步库</p>
+<h3 id="Q：打日志会阻塞事件循环吗？"><a href="#Q：打日志会阻塞事件循环吗？" class="headerlink" title="Q：打日志会阻塞事件循环吗？"></a>Q：打日志会阻塞事件循环吗？</h3><p>A：理论上会的，主要取决于日志去向，如果是打印到标准输入，基本不会，如果打印到文件，理论上会存在磁盘IO阻塞，但是因为一般日志写入都比较快，基本影响不大，但是也存在磁盘故障，导致磁盘IO缓慢的时候影响服务的可能，如果日志后端是网络后端，那么就需要特别注意了，这个网络日志的处理是否使用队列，或者在后台线程处理，如果打日志的时候连接日志后端服务器，那么参考之前说的网络IO的情况</p>
+<p>现在很多服务部署的方案结合docker容器，直接输出到标准输出，交给docker处理，处理起来会简单不少，另外极致追求高性能的服务是不会打日志的，或者只打错误日志</p>
+<h3 id="Q：我都改造完了为什么我的函数逻辑执行时间还是那么久"><a href="#Q：我都改造完了为什么我的函数逻辑执行时间还是那么久" class="headerlink" title="Q：我都改造完了为什么我的函数逻辑执行时间还是那么久"></a>Q：我都改造完了为什么我的函数逻辑执行时间还是那么久</h3><p>A：asyncio帮助我们结局阻塞IO的问题，并不是说减少了阻塞时间，只是帮助程序在阻塞的时候，利用阻塞时间，去做其他的事情，帮助减少整体程序执行时间，帮助提高并发性能，函数逻辑慢，还需要从函数逻辑本身逐步排查</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/asyncio/" rel="tag"># asyncio</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2020/04/cl0m4bmfh001dehkr7lwjhtaq/" rel="prev" title="Dell服务器调整风扇转速降低噪音">
+                  <i class="fa fa-chevron-left"></i> Dell服务器调整风扇转速降低噪音
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jove</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"JoveYu","repo":"gitalk","client_id":"597faed5eb8de9690a69","client_secret":"6569beeeefaae9be50ac39b037beb280088ccf20","admin_user":"JoveYu","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"6dbd0382c1a6fc1caefd926fa6ccc782"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
