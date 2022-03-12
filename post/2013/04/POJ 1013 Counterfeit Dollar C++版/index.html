@@ -18,12 +18,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.jove.im","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jove.cc","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="题目链接：http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;1013 解释下题意，有12个硬币，有一个是假的跟其他重量不一样，要求你通过三次称量找出这个硬币！称量不用你考虑，题目说了三次称量一定能找到这个硬币，我们所做的就是分析数据！ 我们来讲解下称量：even则盘两边的必然都是真的up左盘有轻假硬币或者右盘有重假硬币down右盘有轻假硬币或者左盘有重假硬币 其中有点需要特别说明，也是解题的要点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 1013 Counterfeit Dollar C++版">
-<meta property="og:url" content="https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/index.html">
+<meta property="og:url" content="https://jove.cc/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/index.html">
 <meta property="og:site_name" content="Jove&#39;s Blog">
 <meta property="og:description" content="题目链接：http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;1013 解释下题意，有12个硬币，有一个是假的跟其他重量不一样，要求你通过三次称量找出这个硬币！称量不用你考虑，题目说了三次称量一定能找到这个硬币，我们所做的就是分析数据！ 我们来讲解下称量：even则盘两边的必然都是真的up左盘有轻假硬币或者右盘有重假硬币down右盘有轻假硬币或者左盘有重假硬币 其中有点需要特别说明，也是解题的要点">
 <meta property="og:locale" content="zh_CN">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/">
+<link rel="canonical" href="https://jove.cc/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/","path":"post/2013/04/POJ 1013 Counterfeit Dollar C++版/","title":"POJ 1013 Counterfeit Dollar C++版"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jove.cc/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/","path":"post/2013/04/POJ 1013 Counterfeit Dollar C++版/","title":"POJ 1013 Counterfeit Dollar C++版"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>POJ 1013 Counterfeit Dollar C++版 | Jove's Blog</title>
@@ -200,7 +200,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/">
+    <link itemprop="mainEntityOfPage" href="https://jove.cc/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -274,7 +274,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/" title="POJ 1013 Counterfeit Dollar C++版">https://blog.jove.im/post/2013/04/POJ 1013 Counterfeit Dollar C++版/</a>
+      <a href="https://jove.cc/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/" title="POJ 1013 Counterfeit Dollar C++版">https://jove.cc/post/2013/04/POJ 1013 Counterfeit Dollar C++版/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
