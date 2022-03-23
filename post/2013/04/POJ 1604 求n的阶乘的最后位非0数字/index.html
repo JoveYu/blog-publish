@@ -18,12 +18,12 @@
 <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="//cdn.staticfile.org/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jove.cc","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="//cdn.staticfile.org/hexo-theme-next/8.10.1/config.min.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.jove.im","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="//cdn.staticfile.org/hexo-theme-next/8.10.1/config.min.js"></script>
 
     <meta name="description" content="题目链接：http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;1604 今天彪给我出了个小题，还是蛮有启发的。这个题目如题就是简单的求n的阶乘的最后位非0数字，如果你还在想求出阶乘再算出最后一位，那么孩子你想太多了，n范围大些呢，题目中要求是n 小于 100000，这个已经彻底消灭了一个个试的心。最开始的思路很简单,设一个循环变量从1-n,依次乘到累乘变量s中,只保留s的最后几位非零数字代码如下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POJ 1604 求n的阶乘的最后位非0数字">
-<meta property="og:url" content="https://jove.cc/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:url" content="https://blog.jove.im/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/index.html">
 <meta property="og:site_name" content="Jove&#39;s Blog">
 <meta property="og:description" content="题目链接：http:&#x2F;&#x2F;poj.org&#x2F;problem?id&#x3D;1604 今天彪给我出了个小题，还是蛮有启发的。这个题目如题就是简单的求n的阶乘的最后位非0数字，如果你还在想求出阶乘再算出最后一位，那么孩子你想太多了，n范围大些呢，题目中要求是n 小于 100000，这个已经彻底消灭了一个个试的心。最开始的思路很简单,设一个循环变量从1-n,依次乘到累乘变量s中,只保留s的最后几位非零数字代码如下">
 <meta property="og:locale" content="zh_CN">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jove.cc/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/">
+<link rel="canonical" href="https://blog.jove.im/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jove.cc/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/","path":"post/2013/04/POJ 1604 求n的阶乘的最后位非0数字/","title":"POJ 1604 求n的阶乘的最后位非0数字"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.jove.im/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/","path":"post/2013/04/POJ 1604 求n的阶乘的最后位非0数字/","title":"POJ 1604 求n的阶乘的最后位非0数字"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>POJ 1604 求n的阶乘的最后位非0数字 | Jove's Blog</title>
@@ -202,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jove.cc/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -274,7 +274,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://jove.cc/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/" title="POJ 1604 求n的阶乘的最后位非0数字">https://jove.cc/post/2013/04/POJ 1604 求n的阶乘的最后位非0数字/</a>
+      <a href="https://blog.jove.im/post/2013/04/POJ%201604%20%E6%B1%82n%E7%9A%84%E9%98%B6%E4%B9%98%E7%9A%84%E6%9C%80%E5%90%8E%E4%BD%8D%E9%9D%9E0%E6%95%B0%E5%AD%97/" title="POJ 1604 求n的阶乘的最后位非0数字">https://blog.jove.im/post/2013/04/POJ 1604 求n的阶乘的最后位非0数字/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
