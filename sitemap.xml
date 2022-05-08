@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.jove.im/post/2022/05/synology-proxy-allow-wildcard/</loc>
+    
+    <lastmod>2022-05-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.jove.im/post/2022/05/containerd-mirror-proxy/</loc>
     
     <lastmod>2022-05-08</lastmod>
@@ -2013,6 +2022,27 @@
   
   <url>
     <loc>https://blog.jove.im/tags/containerd/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jove.im/tags/%E7%BE%A4%E6%99%96/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jove.im/tags/nginx/</loc>
+    <lastmod>2022-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jove.im/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2022-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

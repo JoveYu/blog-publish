@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">210</span>
+          <span class="site-state-item-count">211</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,7 +146,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,87 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201979%20Red%20and%20Black%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%201979%20Red%20and%20Black%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1979 Red and Black C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 08:07:11" itemprop="dateCreated datePublished" datetime="2013-04-07T08:07:11+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1979">http://poj.org/problem?id=1979</a></p>
+<p>简单解释下题意，包括@在内，与其连通的.有多少个！</p>
+<p>简单DFS，每次标记一个点已经使用，再四方向深搜，每发现一个，计数t++，这样最后t+1，就是答案，因为@算一个所以要加1.</p>
+<p>其中注意判断点的条件，不仅要没使用过，还要在矩阵内！</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">Problem: 1979		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 256K		Time: 47MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> d[<span class="number">25</span>][<span class="number">25</span>];</span><br><span class="line"><span class="type">int</span> h,w,t,used[<span class="number">25</span>][<span class="number">25</span>],dir[<span class="number">8</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(m&gt;=<span class="number">0</span>&amp;&amp;m;&lt;h&amp;&amp;n;&gt;=<span class="number">0</span>&amp;&amp;n;&lt;w)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> y,<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i+=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> m=y+dir[i];</span><br><span class="line">		<span class="type">int</span> n=x+dir[i+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(used[m][n]==<span class="number">0</span>&amp;&amp;check;(m,n))</span><br><span class="line">		&#123;</span><br><span class="line">			t++;</span><br><span class="line">			used[m][n]=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">dfs</span>(m,n);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> startx,starty;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;w&gt;&gt;h&amp;&amp;w;+h)</span><br><span class="line">	&#123;</span><br><span class="line">		t=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(used,<span class="number">0</span>,<span class="built_in">sizeof</span>(used));</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;h;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;w;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				cin&gt;&gt;d[i][j];</span><br><span class="line">				<span class="keyword">if</span>(d[i][j]==<span class="string">&#x27;@&#x27;</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					startx=j;</span><br><span class="line">					starty=i;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(d[i][j]==<span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">					used[i][j]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			used[starty][startx]=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">dfs</span>(starty,startx);</span><br><span class="line">		cout&lt;&lt;t+<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -919,89 +1000,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201200%20Crazy%20Search%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%201200%20Crazy%20Search%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1200 Crazy Search C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 07:55:40" itemprop="dateCreated datePublished" datetime="2013-04-07T07:55:40+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1200">http://poj.org/problem?id=1200</a></p>
-<p>解释下题意，一个由nc格字母组成的字符串，求有多少种长度为n的子串！比如<br>“daababac”就有5种长度为3的字符串”daa”; “aab”; “aba”; “bab”; “bac”</p>
-<p>分析下题意，要求分辨子串是否不同，纯字符判断会花很多时间，我们构建一个nc进制的数列，将所有字符转换为0，1，2。。nc-1的数字，求每个子串对应的值是否相同就可以间接反映子串是否相同，</p>
-<p>其中ch为字符串，used记录是否出现过，hash分配数字，</p>
-<p>代码如下</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">Problem: 1200		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 20496K		Time: 79MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> used[<span class="number">20000000</span>];</span><br><span class="line"><span class="type">int</span> hash[<span class="number">300</span>];</span><br><span class="line"><span class="type">char</span> ch[<span class="number">1000000</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n,nc,count=<span class="number">0</span>,num=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">memset</span>(used,<span class="number">0</span>,<span class="built_in">sizeof</span>(used));</span><br><span class="line">	<span class="built_in">memset</span>(hash,<span class="number">-1</span>,<span class="built_in">sizeof</span>(hash));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%s&quot;</span>,&amp;n;,&amp;nc;,ch);</span><br><span class="line">	<span class="type">int</span> len=<span class="built_in">strlen</span>(ch);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=len-n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;i+n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(hash[ch[j]-<span class="string">&#x27;a&#x27;</span>]==<span class="number">-1</span>)</span><br><span class="line">				hash[ch[j]-<span class="string">&#x27;a&#x27;</span>]=count++;</span><br><span class="line">			sum=nc*sum+hash[ch[j]-<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(used[sum]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			used[sum]=<span class="number">1</span>;</span><br><span class="line">			num++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

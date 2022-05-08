@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">210</span>
+          <span class="site-state-item-count">211</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -146,7 +146,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,100 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/09/django%E6%99%BA%E8%83%BD%E5%88%86%E9%A1%B5%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/09/django%E6%99%BA%E8%83%BD%E5%88%86%E9%A1%B5%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">django智能分页函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-09-14 14:44:24" itemprop="dateCreated datePublished" datetime="2013-09-14T14:44:24+08:00">2013-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-23 14:22:38" itemprop="dateModified" datetime="2022-03-23T14:22:38+08:00">2022-03-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>django中提供便捷的分页服务，主要通过<br>Pagination来实现的，详细可以参考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/1.5/topics/pagination/">Django文档</a>，通过简单设立每页显示的数量，来自动化获得分页object_list，先来看看调用方式，借用文档里面的例子：</p>
+<!-- TEASER_END -->
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>objects = [<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;paul&#x27;</span>, <span class="string">&#x27;george&#x27;</span>, <span class="string">&#x27;ringo&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Paginator(objects, <span class="number">2</span>)<span class="comment">#新建分页，参数为所有的obj，和每页显示数量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.count<span class="comment">#所有的obj的数量</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.num_pages<span class="comment">#分出来的页数</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.page_range<span class="comment">#页数的列表</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1 = p.page(<span class="number">1</span>)<span class="comment">#得到第一页</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1</span><br><span class="line">&lt;Page <span class="number">1</span> of <span class="number">2</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page1.object_list<span class="comment">#第一页的obj列表</span></span><br><span class="line">[<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;paul&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2 = p.page(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.object_list</span><br><span class="line">[<span class="string">&#x27;george&#x27;</span>, <span class="string">&#x27;ringo&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_next()<span class="comment">#是否有下一页</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_previous()<span class="comment">#是否有前一页</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.has_other_pages()<span class="comment">#是否有其他页</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>page2.next_page_number()<span class="comment">#下一页的地址，这里最好判断是否有，不然会异常</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">...</span><br><span class="line">EmptyPage: That page contains no results</span><br></pre></td></tr></table></figure>
+
+<p>其实分页并不是一个复杂的流程，但是我跟喜欢使用官方提供的功能，省的自己浪费没有必要的时间，但是在使用的过程中，还是优点满足不了我们的用途，一般写导航的时候都会显示当前页前后3-4也的导航，向这样的：</p>
+<p>![导航][2]</p>
+<p>而我们仅仅能得到一个所有的列表，加之每次都要在模板里配置嫌多判断，前不久学习了一种好的写法，稍微改造了下，封装了下，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_pagination</span>(<span class="params">request, queryset, display_amount=<span class="number">15</span>, after_range_num = <span class="number">5</span>,bevor_range_num = <span class="number">4</span></span>):</span><br><span class="line">    <span class="comment">#按参数分页</span></span><br><span class="line">    paginator = Paginator(queryset, display_amount)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#得到request中的page参数</span></span><br><span class="line">        page =<span class="built_in">int</span>(request.GET.get(<span class="string">&#x27;page&#x27;</span>))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="comment">#默认为1</span></span><br><span class="line">        page = <span class="number">1</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#尝试获得分页列表</span></span><br><span class="line">        objects = paginator.page(page)</span><br><span class="line">    <span class="comment">#如果页数不存在</span></span><br><span class="line">    <span class="keyword">except</span> EmptyPage:</span><br><span class="line">        <span class="comment">#获得最后一页</span></span><br><span class="line">        objects = paginator.page(paginator.num_pages)</span><br><span class="line">    <span class="comment">#如果不是一个整数</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="comment">#获得第一页</span></span><br><span class="line">        objects = paginator.page(<span class="number">1</span>)</span><br><span class="line">    <span class="comment">#根据参数配置导航显示范围</span></span><br><span class="line">    <span class="keyword">if</span> page &gt;= after_range_num:</span><br><span class="line">        page_range = paginator.page_range[page-after_range_num:page+bevor_range_num]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        page_range = paginator.page_range[<span class="number">0</span>:page+bevor_range_num]</span><br><span class="line">    <span class="keyword">return</span> objects,page_range</span><br></pre></td></tr></table></figure>
+<p>在模板中配套加入代码，这个模板使用bootstrap应该很好理解</p>
+<p>分页出来的数据处理，像这样写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if objects.object_list %&#125;</span><br><span class="line">    &#123;% for p in objects.object_list %&#125;</span><br><span class="line">    ...</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在下面加入导航</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;pagination pagination-centered&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &#123;% if objects.has_previous %&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; objects.previous_page_number &#125;&#125;&quot;&gt;前一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">    &lt;li class=&quot;active&quot;&gt;&lt;a&gt;前一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% for p in page_range %&#125;</span><br><span class="line">      &#123;% ifequal p objects.number %&#125;</span><br><span class="line">      &lt;li class=&quot;active&quot;&gt;&lt;a&gt;&#123;&#123;p&#125;&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123;p&#125;&#125;&quot; title=&quot;第&#123;&#123;p&#125;&#125;页&quot;&gt;&#123;&#123;p&#125;&#125;&lt;/a&gt;&lt;li&gt;</span><br><span class="line">      &#123;% endifequal %&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;% if objects.has_next %&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;?page=&#123;&#123; objects.next_page_number &#125;&#125;&quot;&gt;后一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">    &lt;li class=&quot;active&quot;&gt; &lt;a&gt;后一页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>大家可能还关心view怎么写，给一个简单的示例吧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_view</span>(<span class="params">request</span>):</span><br><span class="line">    all_objects = some_model.objects.<span class="built_in">all</span>()</span><br><span class="line">    objects, page_range = my_pagination(request, all_objects)</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">&#x27;a_template.html&#x27;</span>,&#123;<span class="string">&#x27;objects&#x27;</span>:objects,<span class="string">&#x27;page_range&#x27;</span>:page_range&#125;,context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure>
+
+<p>简单来说下这样写的好处，一方面不用关心处理的逻辑，一方面不需要对模板进行特殊处理，将request传进去，连page参数都不用操心，相信这样的一个分页函数能帮到你！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -988,90 +1082,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/4-12%20%E5%86%8D%E4%BC%9A%E6%B7%B1%E5%BA%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/4-12%20%E5%86%8D%E4%BC%9A%E6%B7%B1%E5%BA%A6/" class="post-title-link" itemprop="url">4-12 再会深度</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-12 08:24:01" itemprop="dateCreated datePublished" datetime="2013-04-12T08:24:01+08:00">2013-04-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>deepin从我了解那天开始就是我一直想去的公司，撇开那些关于xp的好与不好，deepin的linux做的真的很用心，今天再一次有机会参观deepin，借着下载iso的时间聊聊今天的一些感想！</p>
-<h3 id="所见"><a href="#所见" class="headerlink" title="所见"></a>所见</h3><p>由于显卡驱动的问题，deepin的新版de我没有机会尝试，今天去看了看，作为一个桌面环境来说，dde已经比较完善，launcher，dock，通知，电源，网络，挂载。。这些都实现了，我也刻意关注了下资源占用，基本上属于xfce级别，这点我很惊讶，compiz的特效配上新版de真的是比较炫，使用了半天电脑温度还好，经不住诱惑的我，想安装试试了。</p>
-<p>说来一定要试试的就是deepin-emacs了，虽然我在arch上打包用过，但是相信配合deepin会使用的更好，emacs还是那么强大，败给他的仅仅是自己的耐心，听歌，文档，todo，终端，irc，email，翻译。。这些都是实用功能，自己配置起这样的emacs要花的时间可以想象</p>
-<h3 id="所闻"><a href="#所闻" class="headerlink" title="所闻"></a>所闻</h3><p>听侯哥说deepin有着庞大的野心，不仅要在桌面环境上下功夫，在网站及协作平台上来下功夫，要利用django来重写deepin整站，这点我很感兴趣，自从写这个博客体会到django的强大和便捷后，对这个陌生的领域特别的感兴趣。</p>
-<h3 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h3><p>从deepin离开，侯哥送我出来聊了一下，表达了我对deepin这个自由的公司的向往，在车上我也有想，自己在所从事的领域，真的不够精，很多方面都是了解，但是不精通，导致自己在选择的时候，选项很多，但是底气确不够，我喜欢前沿技术但是我觉得要把每个计数都融会贯通，结合自己已经很熟悉的技术再来尝试新的技术，就像今天看的的利用python调用js渲染页面实现的一个简单的weibo的例子。</p>
-<p>自己的大学已经不多了，真正自己能拿得出手的东西也不是很多，想指望这些一下能找个好的工作真的不容易，<br>我要加紧把握自己的时间，已经玩掉很多时间了，多练练手，不管最后有没有机会进入deepin，我相信这段经历都是美好的！</p>
-<p>4-12<br>今天好热！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
