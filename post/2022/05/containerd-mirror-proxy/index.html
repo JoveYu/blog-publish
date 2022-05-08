@@ -20,15 +20,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.jove.im","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="//cdn.staticfile.org/hexo-theme-next/8.10.1/config.min.js"></script>
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="起因最近把测试的k8s集群迁移到containerd中，正好整理下相关配置，考虑到k8s中大量项目使用k8s.gcr.io或者quay.io的镜像，在国内无法正常拉取，希望做一个完美无缝的方式实现镜像拉取自由 考虑虽然我的电脑使用全局透明代理，网络环境几乎完美，不存在任何障碍，但是在测试服务器上我不喜欢设置透明代理这样的网络方案，在这次迁移containerd的过程中发现containerd支持设">
+<meta property="og:type" content="article">
 <meta property="og:title" content="containerd配置常用镜像代理加速">
 <meta property="og:url" content="https://blog.jove.im/post/2022/05/containerd-mirror-proxy/index.html">
 <meta property="og:site_name" content="Jove&#39;s Blog">
+<meta property="og:description" content="起因最近把测试的k8s集群迁移到containerd中，正好整理下相关配置，考虑到k8s中大量项目使用k8s.gcr.io或者quay.io的镜像，在国内无法正常拉取，希望做一个完美无缝的方式实现镜像拉取自由 考虑虽然我的电脑使用全局透明代理，网络环境几乎完美，不存在任何障碍，但是在测试服务器上我不喜欢设置透明代理这样的网络方案，在这次迁移containerd的过程中发现containerd支持设">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-08T13:26:45.000Z">
-<meta property="article:modified_time" content="2022-05-08T13:29:14.688Z">
+<meta property="article:modified_time" content="2022-05-08T13:58:25.329Z">
 <meta property="article:author" content="Jove">
-<meta property="article:tag" content="技术 python go c">
+<meta property="article:tag" content="k8s">
+<meta property="article:tag" content="containerd">
 <meta name="twitter:card" content="summary">
 
 
@@ -110,7 +113,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -123,6 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%83%E8%99%91"><span class="nav-number">2.</span> <span class="nav-text">考虑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%96%BD"><span class="nav-number">3.</span> <span class="nav-text">实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">搭建镜像代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.1.</span> <span class="nav-text">github加速代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k8s%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.2.</span> <span class="nav-text">k8s镜像加速代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gcr%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.3.</span> <span class="nav-text">gcr镜像加速代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quay%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.4.</span> <span class="nav-text">quay镜像加速代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.5.</span> <span class="nav-text">docker镜像加速代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#containerd%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="nav-number">3.2.</span> <span class="nav-text">containerd配置镜像加速</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E4%B8%AA%E5%9F%9F%E5%90%8D%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">这个域名？</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -148,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -230,7 +234,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-08 21:26:45 / 修改时间：21:29:14" itemprop="dateCreated datePublished" datetime="2022-05-08T21:26:45+08:00">2022-05-08</time>
+      <time title="创建时间：2022-05-08 21:26:45 / 修改时间：21:58:25" itemprop="dateCreated datePublished" datetime="2022-05-08T21:26:45+08:00">2022-05-08</time>
     </span>
 
   
@@ -243,7 +247,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近把测试的k8s集群迁移到containerd中，正好整理下相关配置，考虑到k8s中大量项目使用<code>k8s.gcr.io</code>或者<code>quay.io</code>的镜像，在国内无法正常拉取，希望做一个完美无缝的方式实现镜像拉取自由</p>
+<h1 id="考虑"><a href="#考虑" class="headerlink" title="考虑"></a>考虑</h1><p>虽然我的电脑使用全局透明代理，网络环境几乎完美，不存在任何障碍，但是在测试服务器上我不喜欢设置透明代理这样的网络方案，在这次迁移containerd的过程中发现containerd支持设置多个registry的镜像地址打算尝试下镜像的方案</p>
+<span id="more"></span>
+
+<h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><h2 id="搭建镜像代理"><a href="#搭建镜像代理" class="headerlink" title="搭建镜像代理"></a>搭建镜像代理</h2><p>搭建代理的方案有很多，例如使用vps做反向代理，或者使用国内部分镜像，我选择使用cloudflare提供的worker，其原理是使用js自定义代理逻辑实现网站代理，关键最良心的提供一定量的免费额度</p>
+<p>折腾cloudflare worker的过程并不顺利，好在最近完美解决，具体过程改天另写，详细记录下各家镜像仓库在docker协议上实现的不同导致的兼容性小坑，最终都要我用js来修改协议实现兼容，最终实现的效果如下：</p>
+<h3 id="github加速代理"><a href="#github加速代理" class="headerlink" title="github加速代理"></a>github加速代理</h3><p>代理地址：<code>https://github.920111.xyz</code></p>
+<p>使用方法，简单在所有需要clone或者download的地址前面加上上述代理地址，<br>例如<code>git clone https://github.com/aaa/bbb</code><br>可以写成 <code>git clone https://github.920111.xyz/https://github.com/aaa/bbb</code>解决临时下载的问题，</p>
+<p>虽然使用cloudflare下载速度不算快，不能我的vps相比，但是也能有几百K&#x2F;s，一般下载足够使用了。</p>
+<h3 id="k8s镜像加速代理"><a href="#k8s镜像加速代理" class="headerlink" title="k8s镜像加速代理"></a>k8s镜像加速代理</h3><p>代理地址： <code>https://k8s.920111.xyz</code></p>
+<p>使用方法，拉取镜像的时候替换<code>k8s.gcr.io</code>为<code>k8s.920111.xyz</code></p>
+<h3 id="gcr镜像加速代理"><a href="#gcr镜像加速代理" class="headerlink" title="gcr镜像加速代理"></a>gcr镜像加速代理</h3><p>代理地址： <code>https://gcr.920111.xyz</code></p>
+<p>使用方法，拉取镜像的时候替换<code>gcr.io</code>为<code>gcr.920111.xyz</code></p>
+<h3 id="quay镜像加速代理"><a href="#quay镜像加速代理" class="headerlink" title="quay镜像加速代理"></a>quay镜像加速代理</h3><p>代理地址：<code>https://quay.920111.xyz</code></p>
+<p>使用方法，拉取镜像的时候替换<code>quay.io</code>为<code>quay.920111.xyz</code></p>
+<h3 id="docker镜像加速代理"><a href="#docker镜像加速代理" class="headerlink" title="docker镜像加速代理"></a>docker镜像加速代理</h3><p>代理地址：<code>https://docker.920111.xyz</code></p>
+<p>使用方法，拉取镜像的时候替换<code>docker.io</code>为<code>docker.920111.xyz</code></p>
+<h2 id="containerd配置镜像加速"><a href="#containerd配置镜像加速" class="headerlink" title="containerd配置镜像加速"></a>containerd配置镜像加速</h2><p>由于containerd支持配置任意域名的镜像，相比之前docker只能配置docker.io的镜像，大大增加镜像配置的灵活性，通读了相关文档，并且调试了一下午终于搞定，其中最大的一个坑就是配置文件中如果没有version这个字段的话，配置文件无法生效，之所以调试了一下午也是因为怎么配置实际使用效果都不符合预期，晕。</p>
+<p>最终配置如下</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/containerd/config.toml</span><br><span class="line"><span class="attr">version</span> = <span class="number">2</span></span><br><span class="line"><span class="section">[plugins]</span></span><br><span class="line">  <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;]</span></span><br><span class="line">    <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry]</span></span><br><span class="line">      <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors]</span></span><br><span class="line">        <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors.&quot;docker.io&quot;]</span></span><br><span class="line">          <span class="attr">endpoint</span> = [<span class="string">&quot;https://docker.920111.xyz&quot;</span>]</span><br><span class="line">        <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors.&quot;k8s.gcr.io&quot;]</span></span><br><span class="line">          <span class="attr">endpoint</span> = [<span class="string">&quot;https://k8s.920111.xyz&quot;</span>]</span><br><span class="line">        <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors.&quot;gcr.io&quot;]</span></span><br><span class="line">          <span class="attr">endpoint</span> = [<span class="string">&quot;https://gcr.920111.xyz&quot;</span>]</span><br><span class="line">        <span class="section">[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors.&quot;quay.io&quot;]</span></span><br><span class="line">          <span class="attr">endpoint</span> = [<span class="string">&quot;https://quay.920111.xyz&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>配置完成后，k8s环境中直接拉取原本无法拉取的镜像，再也不用去改镜像地址，在k8s端使用是无感的，管理起来方便多了，关键这个方案还是白嫖CF的CDN，这样的良心公司什么时候国内才能有啊。</p>
+<h1 id="这个域名？"><a href="#这个域名？" class="headerlink" title="这个域名？"></a>这个域名？</h1><p>920111.xyz这个域名是我随手注册的，用来放些没用的东西，这个域名之前100块购买了10年，反正也没用，这次正好用上了</p>
+
     </div>
 
     
@@ -268,6 +295,10 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+              <a href="/tags/containerd/" rel="tag"># containerd</a>
+          </div>
 
         
 
