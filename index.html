@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">210</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -188,6 +188,75 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2022/05/containerd-mirror-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2022/05/containerd-mirror-proxy/" class="post-title-link" itemprop="url">containerd配置常用镜像代理加速</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-08 21:26:45 / 修改时间：21:29:14" itemprop="dateCreated datePublished" datetime="2022-05-08T21:26:45+08:00">2022-05-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1009,83 +1078,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_view</span>(<span class="params">request</span>):</span><br><span class="line">    all_objects = some_model.objects.<span class="built_in">all</span>()</span><br><span class="line">    objects, page_range = my_pagination(request, all_objects)</span><br><span class="line">    <span class="keyword">return</span> render_to_response(<span class="string">&#x27;a_template.html&#x27;</span>,&#123;<span class="string">&#x27;objects&#x27;</span>:objects,<span class="string">&#x27;page_range&#x27;</span>:page_range&#125;,context_instance=RequestContext(request))</span><br></pre></td></tr></table></figure>
 
 <p>简单来说下这样写的好处，一方面不用关心处理的逻辑，一方面不需要对模板进行特殊处理，将request传进去，连page参数都不用操心，相信这样的一个分页函数能帮到你！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/07/django%E9%BB%98%E8%AE%A4admin%E4%B8%ADGroup%E6%B7%BB%E5%8A%A0%E9%80%89%E6%8B%A9User%E7%95%8C%E9%9D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/07/django%E9%BB%98%E8%AE%A4admin%E4%B8%ADGroup%E6%B7%BB%E5%8A%A0%E9%80%89%E6%8B%A9User%E7%95%8C%E9%9D%A2/" class="post-title-link" itemprop="url">django默认admin中Group添加选择User界面</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-07-28 13:46:42" itemprop="dateCreated datePublished" datetime="2013-07-28T13:46:42+08:00">2013-07-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>django中的auth一般人都会用到不管是用他进入后台，还是自定义User model来实现用户管理，这都比必用的app，然后在使用中有一点很不方便，这两天研究了下，一般办法都是利用form解决的！但是苦于一直找不到想权限那样合适的控件！今天一个碰巧的情况解决了这些问题，不多说，重写groupadmin的form</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.contrib.admin.widgets <span class="keyword">import</span> FilteredSelectMultiple</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.admin <span class="keyword">import</span> GroupAdmin</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> Group,User</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GroupAdminForm</span>(forms.ModelForm):</span><br><span class="line">    users = forms.ModelMultipleChoiceField(queryset=User.objects.<span class="built_in">all</span>(),</span><br><span class="line">                                           widget=FilteredSelectMultiple(<span class="string">&#x27;Users&#x27;</span>, <span class="literal">False</span>),</span><br><span class="line">                                           required=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Group</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        instance = kwargs.get(<span class="string">&#x27;instance&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            initial = kwargs.get(<span class="string">&#x27;initial&#x27;</span>, &#123;&#125;)</span><br><span class="line">            initial[<span class="string">&#x27;users&#x27;</span>] = instance.user_set.<span class="built_in">all</span>()</span><br><span class="line">            kwargs[<span class="string">&#x27;initial&#x27;</span>] = initial</span><br><span class="line">        <span class="built_in">super</span>(GroupAdminForm, self).__init__(*args, **kwargs)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">save</span>(<span class="params">self, commit=<span class="literal">True</span></span>):</span><br><span class="line">        group = <span class="built_in">super</span>(GroupAdminForm, self).save(commit=commit)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> commit:</span><br><span class="line">            group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            old_save_m2m = self.save_m2m</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">new_save_m2m</span>():</span><br><span class="line">                old_save_m2m()</span><br><span class="line">                group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">            self.save_m2m = new_save_m2m</span><br><span class="line">        <span class="keyword">return</span> group</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyGroupAdmin</span>(<span class="title class_ inherited__">GroupAdmin</span>):</span><br><span class="line">    form = GroupAdminForm</span><br><span class="line"></span><br><span class="line">admin.site.unregister(Group)</span><br><span class="line">admin.site.register(Group, MyGroupAdmin)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

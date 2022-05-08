@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">209</span>
+          <span class="site-state-item-count">210</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -188,6 +188,83 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/07/django%E9%BB%98%E8%AE%A4admin%E4%B8%ADGroup%E6%B7%BB%E5%8A%A0%E9%80%89%E6%8B%A9User%E7%95%8C%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/07/django%E9%BB%98%E8%AE%A4admin%E4%B8%ADGroup%E6%B7%BB%E5%8A%A0%E9%80%89%E6%8B%A9User%E7%95%8C%E9%9D%A2/" class="post-title-link" itemprop="url">django默认admin中Group添加选择User界面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-07-28 13:46:42" itemprop="dateCreated datePublished" datetime="2013-07-28T13:46:42+08:00">2013-07-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>django中的auth一般人都会用到不管是用他进入后台，还是自定义User model来实现用户管理，这都比必用的app，然后在使用中有一点很不方便，这两天研究了下，一般办法都是利用form解决的！但是苦于一直找不到想权限那样合适的控件！今天一个碰巧的情况解决了这些问题，不多说，重写groupadmin的form</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.contrib.admin.widgets <span class="keyword">import</span> FilteredSelectMultiple</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.admin <span class="keyword">import</span> GroupAdmin</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> Group,User</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GroupAdminForm</span>(forms.ModelForm):</span><br><span class="line">    users = forms.ModelMultipleChoiceField(queryset=User.objects.<span class="built_in">all</span>(),</span><br><span class="line">                                           widget=FilteredSelectMultiple(<span class="string">&#x27;Users&#x27;</span>, <span class="literal">False</span>),</span><br><span class="line">                                           required=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:</span><br><span class="line">        model = Group</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        instance = kwargs.get(<span class="string">&#x27;instance&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            initial = kwargs.get(<span class="string">&#x27;initial&#x27;</span>, &#123;&#125;)</span><br><span class="line">            initial[<span class="string">&#x27;users&#x27;</span>] = instance.user_set.<span class="built_in">all</span>()</span><br><span class="line">            kwargs[<span class="string">&#x27;initial&#x27;</span>] = initial</span><br><span class="line">        <span class="built_in">super</span>(GroupAdminForm, self).__init__(*args, **kwargs)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">save</span>(<span class="params">self, commit=<span class="literal">True</span></span>):</span><br><span class="line">        group = <span class="built_in">super</span>(GroupAdminForm, self).save(commit=commit)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> commit:</span><br><span class="line">            group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            old_save_m2m = self.save_m2m</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">new_save_m2m</span>():</span><br><span class="line">                old_save_m2m()</span><br><span class="line">                group.user_set = self.cleaned_data[<span class="string">&#x27;users&#x27;</span>]</span><br><span class="line">            self.save_m2m = new_save_m2m</span><br><span class="line">        <span class="keyword">return</span> group</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyGroupAdmin</span>(<span class="title class_ inherited__">GroupAdmin</span>):</span><br><span class="line">    form = GroupAdminForm</span><br><span class="line"></span><br><span class="line">admin.site.unregister(Group)</span><br><span class="line">admin.site.register(Group, MyGroupAdmin)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -975,103 +1052,6 @@
 <h3 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h3><p>从deepin离开，侯哥送我出来聊了一下，表达了我对deepin这个自由的公司的向往，在车上我也有想，自己在所从事的领域，真的不够精，很多方面都是了解，但是不精通，导致自己在选择的时候，选项很多，但是底气确不够，我喜欢前沿技术但是我觉得要把每个计数都融会贯通，结合自己已经很熟悉的技术再来尝试新的技术，就像今天看的的利用python调用js渲染页面实现的一个简单的weibo的例子。</p>
 <p>自己的大学已经不多了，真正自己能拿得出手的东西也不是很多，想指望这些一下能找个好的工作真的不容易，<br>我要加紧把握自己的时间，已经玩掉很多时间了，多练练手，不管最后有没有机会进入deepin，我相信这段经历都是美好的！</p>
 <p>4-12<br>今天好热！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/django-south%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%BB%B4%E6%8A%A4%E5%88%A9%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/django-south%E4%BD%BF%E7%94%A8%EF%BC%8C%E7%BB%B4%E6%8A%A4%E5%88%A9%E5%99%A8/" class="post-title-link" itemprop="url">django-south使用，维护利器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-08 14:50:27" itemprop="dateCreated datePublished" datetime="2013-04-08T14:50:27+08:00">2013-04-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>django网站数据库方便基本上都是自动维护的，但是如果要修改数据库就会比较麻烦，查了下相关的文档，django通过syncdb无法实现对models的增加。因为可能会造成意外的错误，所以推介手动修改数据库。但是比如我这个blog的维护，加入新功能难免会修改数据库，这里介绍个便捷的方法使用django-south</p>
-<p>大家可以上他们<a target="_blank" rel="noopener" href="http://south.aeracode.org/">官网</a>来获取包的最新版本，也可以通过pip安装</p>
-<p>下面简单讲下这个包的使用</p>
-<ol>
-<li><p>在INSTALL_APP中添加south，通过syncdb将south同步进数据库</p>
-</li>
-<li><p>执行下列这个句，在你的app目录下创建migrations目录以及第一次迁移需要的0001_initial.py文件</p>
-<blockquote>
-<p>python2 manage.py convert_to_south youappnam</p>
-</blockquote>
-</li>
-<li><p>如果models改变就执行</p>
-<blockquote>
-<p>python2 manage.py schemamigration youappname –auto</p>
-</blockquote>
-</li>
-<li><p>最后执行同步数据库（如果出现表已存在的错误，后面加 –fake）</p>
-<blockquote>
-<p>migrate manage.py youappnam</p>
-</blockquote>
-</li>
-</ol>
 
       
     </div>
