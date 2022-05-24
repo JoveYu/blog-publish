@@ -135,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">211</span>
+          <span class="site-state-item-count">212</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202209%20The%20King%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%202209%20The%20King%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2209 The King C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 06:36:17" itemprop="dateCreated datePublished" datetime="2013-04-07T06:36:17+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2209">http://poj.org/problem?id=2209</a></p>
+<p>水题，就是求n个数的e次幂，如何加最大！必然是不加负数就是了！</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">Problem: 2209		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 252K		Time: 16MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,n,e,son[<span class="number">101</span>],sum=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;e;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;son[i];</span><br><span class="line">		<span class="keyword">if</span>(e==<span class="number">1</span>&amp;&amp;son;[i]&gt;<span class="number">0</span>)</span><br><span class="line">			sum+=son[i];</span><br><span class="line">		<span class="keyword">if</span>(e==<span class="number">2</span>)</span><br><span class="line">			sum+=son[i]*son[i];</span><br><span class="line">		<span class="keyword">if</span>(e==<span class="number">3</span>&amp;&amp;son;[i]&gt;<span class="number">0</span>)</span><br><span class="line">			sum+=son[i]*son[i]*son[i];</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -990,89 +1069,6 @@ int main()
 <p>其中有个小问题让我郁闷了半天C++提交老是编译错误，我G++编译就没问题，后来搞了半天才知道C++里不叫cstring叫string！郁闷！</p>
 <p>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************</span></span><br><span class="line"><span class="comment">Problem: 1016		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 244K		Time: 16MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">**************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">string str[<span class="number">16</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">work</span><span class="params">(<span class="type">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,w[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;(<span class="type">int</span>)str[t].<span class="built_in">size</span>();i++)</span><br><span class="line">		w[str[t][i]-<span class="string">&#x27;0&#x27;</span>]++;</span><br><span class="line">	string s=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		<span class="keyword">if</span>(w[i]&gt;<span class="number">0</span>&amp;&amp;w;[i]&lt;<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s+=w[i]+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			s+=i+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(w[i]&gt;=<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			s+=w[i]/<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			s+=w[i]%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			s+=i+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	str[t+<span class="number">1</span>]=s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j,flag;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;str[<span class="number">0</span>]&amp;&amp;str;[<span class="number">0</span>][<span class="number">0</span>]!=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">15</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			flag=<span class="number">0</span>;</span><br><span class="line">			<span class="built_in">work</span>(i);</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=i;j++)</span><br><span class="line">				<span class="keyword">if</span>(str[i+<span class="number">1</span>]==str[j])</span><br><span class="line">				&#123;</span><br><span class="line">					flag=<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(flag==<span class="number">1</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">				cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">&quot; is self-inventorying&quot;</span>&lt;&lt;endl;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(j==i)</span><br><span class="line">				cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">&quot; is self-inventorying after &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot; steps&quot;</span>&lt;&lt;endl;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">&quot; enters an inventory loop of length &quot;</span>&lt;&lt;i-j+<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">&quot; can not be classified after 15 iterations&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%201013%20Counterfeit%20Dollar%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1013 Counterfeit Dollar C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 06:20:11" itemprop="dateCreated datePublished" datetime="2013-04-07T06:20:11+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1013">http://poj.org/problem?id=1013</a></p>
-<p>解释下题意，有12个硬币，有一个是假的跟其他重量不一样，要求你通过三次称量找出这个硬币！称量不用你考虑，题目说了三次称量一定能找到这个硬币，我们所做的就是分析数据！</p>
-<p>我们来讲解下称量：<br>even则盘两边的必然都是真的<br>up左盘有轻假硬币或者右盘有重假硬币<br>down右盘有轻假硬币或者左盘有重假硬币</p>
-<p>其中有点需要特别说明，也是解题的要点，就是up和down的情况下没有称的一定是真的！没有这个判断是完成不了题目的！</p>
-<p>这道题花了我大概3个小时，百思不得其解，一直我定义的cmp都是4个字节，觉得也没问题，但是最后改成5就AC了，我擦，当时就想骂人了，原来忘记了，一个字符串需要’\00’做结尾，我是说怎么数据都对还能错的，还是自己大意了！</p>
-<p>具体的思路看注释吧</p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 1013		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 176K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j,len,n,d[<span class="number">12</span>],temp[<span class="number">12</span>];</span><br><span class="line">	<span class="type">char</span> left[<span class="number">12</span>],right[<span class="number">12</span>],cmp[<span class="number">5</span>];</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n;);</span><br><span class="line">	<span class="keyword">while</span>(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//d数组表示真假性-1表示可能假0不知道1真2可能真</span></span><br><span class="line">		<span class="built_in">memset</span>(d,<span class="number">0</span>,<span class="built_in">sizeof</span>(d));</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%s%s%s&quot;</span>,left,right,cmp);</span><br><span class="line">			len=<span class="built_in">strlen</span>(left);</span><br><span class="line">			<span class="keyword">if</span>(cmp[<span class="number">0</span>]==<span class="string">&#x27;e&#x27;</span>)<span class="comment">//even</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					d[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					d[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="comment">//标记真的</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(cmp[<span class="number">0</span>]==<span class="string">&#x27;u&#x27;</span>)<span class="comment">//up</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">memset</span>(temp,<span class="number">0</span>,<span class="built_in">sizeof</span>(temp));</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(d[left[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">-1</span>)</span><br><span class="line">						d[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="comment">//若既可能真，也可能假，则为真</span></span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(d[left[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">0</span>)</span><br><span class="line">						d[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">2</span>;</span><br><span class="line">					<span class="comment">//否则将不知道的标记为可能真</span></span><br><span class="line">					<span class="comment">//下面的不一一列举</span></span><br><span class="line">					<span class="keyword">if</span>(d[right[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">2</span>)</span><br><span class="line">						d[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(d[right[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">0</span>)</span><br><span class="line">						d[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">-1</span>;</span><br><span class="line">					temp[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					temp[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="comment">//标记这次比较用过的数</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">					<span class="keyword">if</span>(temp[j]==<span class="number">0</span>)</span><br><span class="line">						d[j]=<span class="number">1</span>;</span><br><span class="line">				<span class="comment">//给没用过的数标记成真</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(cmp[<span class="number">0</span>]==<span class="string">&#x27;d&#x27;</span>)<span class="comment">//down</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">memset</span>(temp,<span class="number">0</span>,<span class="built_in">sizeof</span>(temp));</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;len;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(d[left[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">2</span>)</span><br><span class="line">						d[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(d[left[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">0</span>)</span><br><span class="line">						d[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">-1</span>;</span><br><span class="line">					<span class="keyword">if</span>(d[right[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">-1</span>)</span><br><span class="line">						d[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(d[right[j]-<span class="string">&#x27;A&#x27;</span>]==<span class="number">0</span>)</span><br><span class="line">						d[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">2</span>;</span><br><span class="line">					temp[left[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">					temp[right[j]-<span class="string">&#x27;A&#x27;</span>]=<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">12</span>;j++)</span><br><span class="line">					<span class="keyword">if</span>(temp[j]==<span class="number">0</span>)</span><br><span class="line">						d[j]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">12</span>;i++)<span class="comment">//扫描输出结果</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(d[i]==<span class="number">-1</span>)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%c is the counterfeit coin and it is light.n&quot;</span>,i+<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">			<span class="keyword">if</span>(d[i]==<span class="number">2</span>)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%c is the counterfeit coin and it is heavy.n&quot;</span>,i+<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -135,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">211</span>
+          <span class="site-state-item-count">212</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,83 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/C%E8%AF%AD%E8%A8%80%E6%89%93%E5%AD%97%E7%BB%83%E4%B9%A0%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%8D%8A%E6%88%90%E5%93%81%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/C%E8%AF%AD%E8%A8%80%E6%89%93%E5%AD%97%E7%BB%83%E4%B9%A0%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%8D%8A%E6%88%90%E5%93%81%EF%BC%89/" class="post-title-link" itemprop="url">C语言打字练习程序（半成品）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 03:57:43" itemprop="dateCreated datePublished" datetime="2013-04-07T03:57:43+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天看到个文本输入程序  很有启发 加以修改成了一个打字游戏 可是我运行的时候总是无法正确识别键盘输入今天不早了改天有时间再修改先晒下代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*C语言打字游戏</span></span><br><span class="line"><span class="comment">**键盘读入不正确</span></span><br><span class="line"><span class="comment">**2011-6-8</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;process.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> pos;</span><br><span class="line"><span class="type">int</span> level=<span class="number">1000</span>;</span><br><span class="line"><span class="type">int</span> count;</span><br><span class="line"><span class="type">int</span> num;</span><br><span class="line"><span class="type">int</span> score;</span><br><span class="line"><span class="type">int</span> Down;</span><br><span class="line"><span class="type">int</span> intst;</span><br><span class="line"><span class="type">int</span> isRun;</span><br><span class="line"><span class="type">int</span> isOver;</span><br><span class="line"><span class="type">int</span> isRight;</span><br><span class="line"><span class="type">int</span> isFull;</span><br><span class="line"><span class="type">int</span> map[<span class="number">11</span>][<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Build_char</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> res;</span><br><span class="line">	res=<span class="built_in">rand</span>()%<span class="number">2</span>?(<span class="number">65</span>+<span class="built_in">rand</span>()%<span class="number">26</span>):(<span class="number">97</span>+<span class="built_in">rand</span>()%<span class="number">26</span>);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Build_Pos</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> res;</span><br><span class="line">	res=<span class="built_in">rand</span>()%<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Listener</span><span class="params">(PVOID pvoid)</span>    <span class="comment">//监视输入的线程函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> temp;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;   </span><br><span class="line">		<span class="keyword">while</span>(!_kbhit())</span><br><span class="line">		temp=<span class="built_in">getchar</span>();</span><br><span class="line">		<span class="keyword">if</span>(temp==num)</span><br><span class="line">		&#123;</span><br><span class="line">			score+=<span class="number">10</span>;</span><br><span class="line">			isRight=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(score==<span class="number">100</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				isFull=<span class="number">1</span>;</span><br><span class="line">				temp=<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(temp==<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">			isRun=<span class="number">1</span>-isRun;</span><br><span class="line">		<span class="keyword">if</span>(temp==<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			isOver=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Repaint</span><span class="params">(PVOID pvoid)</span><span class="comment">//重画</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(isOver)<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">while</span>(!isRun);</span><br><span class="line">				<span class="built_in">system</span>(<span class="string">&quot;cls&quot;</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot; 时间：%d  得分：%d  1---暂停，0---退出n--------------------------------------------------------n&quot;</span>,<span class="built_in">time</span>(<span class="number">0</span>)-intst,score);</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=<span class="number">10</span>;j++)</span><br><span class="line">				<span class="keyword">if</span>(map[i][j])</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,map[i][j]);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;--------------------------------------------------------n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Calculate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(map,<span class="number">0</span>,<span class="built_in">sizeof</span>(map));<span class="comment">//全屏清零</span></span><br><span class="line">	map[count][pos]=num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> flag=<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> cnt;</span><br><span class="line">	<span class="keyword">while</span>(flag)<span class="comment">//出现数字</span></span><br><span class="line">	&#123; </span><br><span class="line">		cnt=Down;</span><br><span class="line">		count=<span class="number">1</span>;</span><br><span class="line">		pos=<span class="built_in">Build_Pos</span>();</span><br><span class="line">		num=<span class="built_in">Build_char</span>();</span><br><span class="line">		<span class="keyword">while</span>(cnt&amp;&amp;!isRight)<span class="comment">//数字下掉</span></span><br><span class="line">		&#123;   </span><br><span class="line">			<span class="keyword">if</span>(isOver)<span class="keyword">return</span>;</span><br><span class="line">				<span class="keyword">while</span>(!isRun);</span><br><span class="line">					<span class="built_in">Calculate</span>();</span><br><span class="line">			count++;</span><br><span class="line">			cnt--;</span><br><span class="line">			<span class="built_in">Sleep</span>(level);</span><br><span class="line">		&#125;</span><br><span class="line">	isRight=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	score=<span class="number">0</span>;</span><br><span class="line">	isOver=<span class="number">0</span>;</span><br><span class="line">	Down=<span class="number">10</span>;</span><br><span class="line">	isFull=<span class="number">0</span>;</span><br><span class="line">	isRun=<span class="number">1</span>;</span><br><span class="line">	isRight=<span class="number">0</span>;</span><br><span class="line">    intst=<span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">memset</span>(map,<span class="number">0</span>,<span class="built_in">sizeof</span>(map));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span>  <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">init</span>();</span><br><span class="line">	_beginthread(Listener,<span class="number">0</span>,<span class="literal">NULL</span>); <span class="comment">//开线程</span></span><br><span class="line">	_beginthread(Repaint,<span class="number">0</span>,<span class="literal">NULL</span>); <span class="comment">//开线程</span></span><br><span class="line">	<span class="built_in">Run</span>();</span><br><span class="line">	<span class="keyword">if</span>(isFull)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;祝贺你，你赢了n&quot;</span>);</span><br><span class="line">	<span class="comment">//system(&quot;cls&quot;);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
