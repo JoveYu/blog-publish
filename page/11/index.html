@@ -135,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">212</span>
+          <span class="site-state-item-count">213</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201247%20Magnificent%20Meatballs%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%201247%20Magnificent%20Meatballs%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1247 Magnificent Meatballs C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 08:09:08" itemprop="dateCreated datePublished" datetime="2013-04-07T08:09:08+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1247">http://poj.org/problem?id=1247</a></p>
+<p>解释下题意，S顺时针走E逆时针走，每走过一个点，加上这个数，问在哪相遇可以使两个和相同，输出两个的位置，否则输出不行！</p>
+<p>简单模拟题，根据题意，模拟每个点相遇的情况比较每次的和！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 1247		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 248K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j,n,d[<span class="number">35</span>],sume,sums;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n&amp;&amp;n;)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">			cin&gt;&gt;d[i];</span><br><span class="line">		<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sume=<span class="number">0</span>;</span><br><span class="line">			sums=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;i;j++)</span><br><span class="line">				sums+=d[j];</span><br><span class="line">			<span class="keyword">for</span>(j=i;j&lt;n;j++)</span><br><span class="line">				sume+=d[j];</span><br><span class="line">			<span class="keyword">if</span>(sume==sums)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(sume==sums)</span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;Sam stops at position &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot; and Ella stops at position &quot;</span>&lt;&lt;i+<span class="number">1</span>&lt;&lt;<span class="string">&quot;.&quot;</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;No equal partitioning.&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -898,87 +977,6 @@
 <p>我们来分析下题目的例子<br>1 2 3 4 5 6 7 8 9 10<br>4 5 3 7 2 8 1 6 10 9<br>那么原来第一位上的数经过一次变换就到了第四位上，其他同理，我们要是纯模拟，一定会超时。我们来观察下数列变化，其实变化时一个循环，只是每一位的循环长度不同，<br>1—&gt;4—&gt;7—&gt;1<br>2—&gt;5—&gt;2<br>那么我们用转换次数取余这个循环数，可以省去很多的时间。细节见注释！  </p>
 <p>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">Problem: 1026		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 244K		Time: 141MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> key[<span class="number">205</span>],t[<span class="number">205</span>];</span><br><span class="line">	<span class="type">int</span> n,m,i,j;</span><br><span class="line">	<span class="type">char</span> ch[<span class="number">500</span>],ans[<span class="number">500</span>];</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n&amp;&amp;n;)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//输入对应关系</span></span><br><span class="line">			cin&gt;&gt;key[i];</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//测量该位循环长度</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> temp=key[i];</span><br><span class="line">			<span class="type">int</span> count=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(temp!=i)<span class="comment">//是否循环</span></span><br><span class="line">			&#123;</span><br><span class="line">				temp=key[temp];</span><br><span class="line">				count++;</span><br><span class="line">			&#125;</span><br><span class="line">			t[i]=count;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(cin&gt;&gt;m&amp;&amp;m;)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">getchar</span>();<span class="comment">//这句一定不能掉，我调试的时候发现ch前多读入了一个空格。</span></span><br><span class="line">			cin.<span class="built_in">getline</span>(ch,n+<span class="number">1</span>);</span><br><span class="line">			<span class="type">int</span> len=<span class="built_in">strlen</span>(ch);</span><br><span class="line">			<span class="keyword">for</span>(i=len;i&lt;n;i++)<span class="comment">//补齐位数不够的空格</span></span><br><span class="line">				ch[i]=<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">			ch[n]=<span class="string">&#x27;\00&#x27;</span>;<span class="comment">//加上结束符</span></span><br><span class="line">			<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//处理字符串</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">int</span> temp=i;</span><br><span class="line">				<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=m%t[i];j++)<span class="comment">//寻找对应关系</span></span><br><span class="line">					temp=key[temp];</span><br><span class="line">				ans[temp<span class="number">-1</span>]=ch[i<span class="number">-1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			ans[n]=<span class="string">&#x27;\00&#x27;</span>;<span class="comment">//加上结束符</span></span><br><span class="line">			cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;endl;<span class="comment">//这句害我wa了半天</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201057%20FILE%20MAPPING%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%201057%20FILE%20MAPPING%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1057 FILE MAPPING C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 07:58:38" itemprop="dateCreated datePublished" datetime="2013-04-07T07:58:38+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1057">http://poj.org/problem?id=1057</a></p>
-<p>解释下题意，输入文件系统，dir*就是定义一个文件夹，]就是结束这个文件夹的定义，其中我们观察第2个例子可以看出，每个文件夹里的文件要排序输出，这点要注意</p>
-<p>查阅了几篇文章，看到个用vector做的，其中利用了string，不禁感叹，用string表示字符串数组真实太方便了，其中排序，量长度，大小都有函数，总的来说思路算是DFS但是不是搜索，利用递归输入文件，每一次输入新的文件夹，递归输入一次，正好符合题目的输入格式，输出的时候也是，只不过多了个n表示数据层次，方便输出分隔符，也就是|。具体思路看注释把！</p>
-<p>至于为什么有两个string头文件，因为我用g++编译的但是用的c++提交，其中这个是没有c的！</p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***************************************</span></span><br><span class="line"><span class="comment">Problem: 1057		User: awq123</span></span><br><span class="line"><span class="comment">Memory: 212K		Time: 0MS</span></span><br><span class="line"><span class="comment">Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">***************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span><span class="comment">//文件夹结构体</span></span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;string&gt; file;<span class="comment">//包含的文件</span></span><br><span class="line">	vector&lt;node&gt; dir;<span class="comment">//包含的文件夹</span></span><br><span class="line">	string name;<span class="comment">//文件夹的名字</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node root;<span class="comment">//这句可以不要但是好像会多花点时间</span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> end=<span class="number">0</span>;<span class="comment">//标记是否结束</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fileinput</span><span class="params">(node&amp; now)</span><span class="comment">//输入文件系统</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string temp;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;temp;</span><br><span class="line">		<span class="keyword">if</span> (temp[<span class="number">0</span>]==<span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			end=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(temp[<span class="number">0</span>]==<span class="string">&#x27;f&#x27;</span>)<span class="comment">//如果是文件推入文件序列</span></span><br><span class="line">			now.file.<span class="built_in">push_back</span>(temp);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(temp[<span class="number">0</span>]==<span class="string">&#x27;d&#x27;</span>)<span class="comment">//如果是文件夹</span></span><br><span class="line">		&#123;</span><br><span class="line">			node d;<span class="comment">//定义一个新的结构体</span></span><br><span class="line">			d.name=temp;<span class="comment">//新文件夹名称</span></span><br><span class="line">			<span class="built_in">fileinput</span>(d);<span class="comment">//输入新文件夹内容</span></span><br><span class="line">			now.dir.<span class="built_in">push_back</span>(d);<span class="comment">//将新文件夹推入文件夹序列</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(now.file.<span class="built_in">begin</span>(),now.file.<span class="built_in">end</span>());<span class="comment">//对文件夹里的文件名称进行升序排列</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fileprint</span><span class="params">(node&amp; now,<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="comment">//输入包含的文件夹名</span></span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;|     &quot;</span>;</span><br><span class="line">	cout&lt;&lt;now.name&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;(<span class="type">int</span>)now.dir.<span class="built_in">size</span>();i++)<span class="comment">//搜索输出子目录</span></span><br><span class="line">		<span class="built_in">fileprint</span>(now.dir[i],n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;(<span class="type">int</span>)now.file.<span class="built_in">size</span>();i++)<span class="comment">//输出包含文件名</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;|     &quot;</span>;</span><br><span class="line">		cout&lt;&lt;now.file[i]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//freopen(&quot;Input.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		node root;<span class="comment">//这句一定不能掉，算是root的初始化</span></span><br><span class="line">		root.name=<span class="string">&quot;ROOT&quot;</span>;</span><br><span class="line">		<span class="built_in">fileinput</span>(root);</span><br><span class="line">		<span class="keyword">if</span>(end)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		cout&lt;&lt;<span class="string">&quot;DATA SET &quot;</span>&lt;&lt;i&lt;&lt;<span class="string">&quot;:&quot;</span>&lt;&lt;endl;</span><br><span class="line">		<span class="built_in">fileprint</span>(root,<span class="number">0</span>);</span><br><span class="line">		cout&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

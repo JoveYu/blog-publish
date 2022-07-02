@@ -135,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">212</span>
+          <span class="site-state-item-count">213</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201207%20The%203n%20+%201%20problem%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%201207%20The%203n%20+%201%20problem%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1207 The 3n + 1 problem C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 05:05:43" itemprop="dateCreated datePublished" datetime="2013-04-07T05:05:43+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1207">http://poj.org/problem?id=1207</a></p>
+<p>一个看似复杂的题目，其实算法都已经给出，要求你求出i到j之间最大循环次数，水题，最近做的水题还真是多，没办法东西还是要一点点的学，这个题目不难但是有个小细节需要掌握，就是输入i  j   时若i&gt;j那么要从j开始算，现开始我完成代码也不知道什么问题，后来看了解题报告才知道的！！</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 1207		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 252K		Time: 16MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a,b,i,j,m,key,t,max;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;a&gt;&gt;b)</span><br><span class="line">	&#123;</span><br><span class="line">	</span><br><span class="line">		i=a;j=b;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;j)</span><br><span class="line">		&#123;</span><br><span class="line">			t=i;i=j;j=t;</span><br><span class="line">		&#125;</span><br><span class="line">		max=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(m=i;m&lt;=j;m++)</span><br><span class="line">		&#123;</span><br><span class="line">			t=<span class="number">1</span>;</span><br><span class="line">			key=m;</span><br><span class="line">			<span class="keyword">while</span>(key!=<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(key%<span class="number">2</span>)</span><br><span class="line">					key=<span class="number">3</span>*key+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					key=key/<span class="number">2</span>;</span><br><span class="line">				t++;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(t&gt;max)</span><br><span class="line">				max=t;</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;a&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;max&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -899,87 +978,6 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cout&lt;&lt;mapnum[y][x]&lt;&lt;<span class="string">&quot; step(s) before a loop of &quot;</span>&lt;&lt;t-mapnum[y][x]&lt;&lt;<span class="string">&quot; step(s)&quot;</span>&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 1573		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 260K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getv</span><span class="params">(<span class="type">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">switch</span>(ch)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;N&#x27;</span>: <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;E&#x27;</span>: <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;S&#x27;</span>: <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&#x27;W&#x27;</span>: <span class="keyword">return</span> <span class="number">6</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> step[<span class="number">8</span>]=&#123;<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="type">char</span> map[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line">	<span class="type">int</span> mapnum[<span class="number">50</span>][<span class="number">50</span>];</span><br><span class="line">	<span class="type">int</span> x,y,n,i,j,r,c,t,temp;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;r&gt;&gt;c&gt;&gt;n&amp;&amp;r;!=<span class="number">0</span>&amp;&amp;c;!=<span class="number">0</span>&amp;&amp;n;!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x=n;</span><br><span class="line">		y=<span class="number">1</span>;</span><br><span class="line">		t=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(map,<span class="number">0</span>,<span class="built_in">sizeof</span>(map));</span><br><span class="line">		<span class="built_in">memset</span>(mapnum,<span class="number">0</span>,<span class="built_in">sizeof</span>(mapnum));</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=r;j++)</span><br><span class="line">			<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=c;i++)</span><br><span class="line">				cin&gt;&gt;map[j][i];</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">0</span>||x==c+<span class="number">1</span>||y==<span class="number">0</span>||y==r+<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				cout&lt;&lt;t<span class="number">-1</span>&lt;&lt;<span class="string">&quot; step(s) to exit&quot;</span>&lt;&lt;endl;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(mapnum[y][x]!=<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				cout&lt;&lt;mapnum[y][x]<span class="number">-1</span>&lt;&lt;<span class="string">&quot; step(s) before a loop of &quot;</span>&lt;&lt;t-mapnum[y][x]&lt;&lt;<span class="string">&quot; step(s)&quot;</span>&lt;&lt;endl;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mapnum[y][x]=t++;</span><br><span class="line">			temp=<span class="built_in">getv</span>(map[y][x]);</span><br><span class="line">			x+=step[temp];</span><br><span class="line">			y+=step[temp+<span class="number">1</span>];</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202586%20Y2K%20Accounting%20Bug%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%202586%20Y2K%20Accounting%20Bug%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2586 Y2K Accounting Bug C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 04:54:11" itemprop="dateCreated datePublished" datetime="2013-04-07T04:54:11+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2586">http://poj.org/problem?id=2586</a></p>
-<p>这个题目要求我们分析公司盈亏，题目有点麻烦，盈利和亏损的钱是固定的，公司每5个月汇总一次，全年都是亏的，问一年最多盈利多少钱，s表示盈利，d表示亏损，5个月统计一次都亏空，那么有5种情况：</p>
-<p>1、若SSSSD亏空，那么全年最优情况为SSSSDSSSSDSS<br>2、若SSSDD亏空，那么全年最优情况为SSSDDSSSDDSS<br>3、若SSDDD亏空，那么全年最优情况为SSDDDSSDDDSS<br>4、若SDDDD亏空，那么全年最优情况为SDDDDSDDDDSD<br>5、若DDDDD亏空，那么全年最优情况为DDDDDDDDDDDD</p>
-<p>先令num为最坏测情况也就是第五种，然后一次分析，注意越前面的盈利越大，但是要满足在五个月内是亏损的，所以一次由上到下分析，简单if语句解决，如果有最大的盈利时替换num</p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2586		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 248K		Time: 32MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> max(a,b) (a&gt;b)?a:b</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> s, d, num;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;s&gt;&gt;d)</span><br><span class="line">	&#123;</span><br><span class="line">		num=<span class="number">-12</span>*d;</span><br><span class="line">		<span class="keyword">if</span>(<span class="number">4</span>*s&lt;d)</span><br><span class="line">			num=<span class="built_in">max</span>(num,<span class="number">10</span>*s<span class="number">-2</span>*d);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">3</span>*s&lt;<span class="number">2</span>*d)</span><br><span class="line">			num=<span class="built_in">max</span>(num,<span class="number">8</span>*s<span class="number">-4</span>*d);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">2</span>*s&lt;<span class="number">3</span>*d)</span><br><span class="line">			num=<span class="built_in">max</span>(num,<span class="number">6</span>*s<span class="number">-6</span>*d);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">1</span>*s&lt;<span class="number">4</span>*d)</span><br><span class="line">			num=<span class="built_in">max</span>(num,<span class="number">3</span>*s<span class="number">-9</span>*d);</span><br><span class="line">		<span class="keyword">if</span>(num&gt;<span class="number">0</span>)</span><br><span class="line">			cout&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;Deficit&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

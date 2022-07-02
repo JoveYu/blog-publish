@@ -135,18 +135,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">212</span>
+          <span class="site-state-item-count">213</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/05/Django%E4%B8%AD%E6%B7%BB%E5%8A%A0manage.py%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/05/Django%E4%B8%AD%E6%B7%BB%E5%8A%A0manage.py%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Django中添加manage.py自定义命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-05-04 11:54:52" itemprop="dateCreated datePublished" datetime="2013-05-04T11:54:52+08:00">2013-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近一直忙着寻找实习，也没什么时间来学习新的知识，越找啊越觉得自己懂得东西少。现在安顿下来，也要静下心来学习了！</p>
+<p>manage.py是django的管理文件，简单的来说也可以理解为一个总控制台，我们日常操作django都可以通过他，比如我们需要启动调试服务器，我们会用到这样的命令：</p>
+<blockquote>
+<p>python2 manage.py runserver</p>
+</blockquote>
+<p>runserver就是其中一个管理命令，那么我们现在来尝试下自己添加管理命令。有人可能会这样认为管理嘛干嘛一定要在这里添加命令，自己写个脚本不就可以了，我是这样理解的，每个app都有自己的功能，如果需要一些自定义的功能的时候这样分类方便，将命令写入app也有助于以后app的重构。</p>
+<p>再来个通俗点的，规范总是有价值的，不知道为什么那么遵守就是!开个玩笑！</p>
+<p>我们先创建一个以命令名称为文件名的py文件，例如mycommand.py写入类似下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.management.base <span class="keyword">import</span> BaseCommand</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Command</span>(<span class="title class_ inherited__">BaseCommand</span>):</span><br><span class="line">    args=<span class="string">&#x27;any args&#x27;</span></span><br><span class="line">    <span class="built_in">help</span>=<span class="string">&#x27;print hello world&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">handle</span>(<span class="params">self,*args,**options</span>):</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;hello world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>简单的来说就是继承BaseCommand来实现我们需要的功能，这里args指的是参数，但是并不影响你的输入，仅作为帮助提示，help顾名思义帮助文档，类似__doc__主要显示这条命令的功能，当然这两个参数可以不写的，主要就是其中的handle函数，这个函数完成这条命令的主体功能！</p>
+<p>完成这些后将这个文件放入你的app的management&#x2F;commands目录下目录结构应该是这样的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├── __init__.py</span><br><span class="line">├── management</span><br><span class="line">│   ├── commands</span><br><span class="line">│   │   ├── __init__.py</span><br><span class="line">│   │   └── mycommand.py</span><br><span class="line">│   └── __init__.py</span><br><span class="line">├── models.py</span><br><span class="line">├── tests.py</span><br><span class="line">└── views.py</span><br></pre></td></tr></table></figure>
+
+<p>这样django就会自动识别这些命令了，记得要启用你的app哦。这个时候我们运行</p>
+<blockquote>
+<p>python2 manage.py</p>
+</blockquote>
+<p>你应该可以看到他提示你的命令了</p>
+<blockquote>
+<p>[myapp]   <br>    mycommand</p>
+</blockquote>
+<p>现在我们看看提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python2 manage.py <span class="built_in">help</span> mycommand</span><br><span class="line">Usage: manage.py mycommand [options] any args</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> hello world</span><br></pre></td></tr></table></figure>
+
+<p>然后运行试试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python2 manage.py mycommand     </span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<p>一个简单的例子就这样完成了，再使用时，好好考虑那些功能需要做成manage.py的命令，比如我准备写个简单的命令，将博客文章导出成markdown文件，做个备份</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -950,167 +1053,6 @@ hello world
 </blockquote>
 <p>这就是四个字符的坐标，然后把这些坐标来切割图像字符就能很好的抠出来了，我的结果是这样的</p>
 <p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-1533.jpeg" alt="3"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">验证码识别入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 10:00:31" itemprop="dateCreated datePublished" datetime="2013-04-07T10:00:31+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>验证码识别是一个有意思的项目，很多时候多用于非法抓取，批量处理之类的，给网站运营者造成了一定的损失，这里我们研究验证码识别单纯研究图像识别技术。</p>
-<p>文章主要利用python代码演示，就算你不懂，相信python简洁的自然语言话的语法也能让你理解，图像处理主要用PIL库</p>
-<p>先来看看一个验证码，来自<a target="_blank" rel="noopener" href="http://www.ruanko.com/validateImage.jsp">http://www.ruanko.com/validateImage.jsp</a></p>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/validateImage.jpg" alt="1"></p>
-<p>利用一些图像处理或者图像查看软件来看看，验证码尺寸为60×20每个字母的尺寸为13×9而且验证码位置相对固定，这就是一个很适合我们初学者学习的一个例子，对于字体的分割相对容易一点</p>
-<p>我们批量下载50个验证码来取字库，python提供方便的下载功能，脚本如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">50</span>):</span><br><span class="line">    url = <span class="string">&#x27;http://www.ruanko.com/validateImage.jsp&#x27;</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;download&quot;</span>, i</span><br><span class="line">    file(<span class="string">&quot;./code/%04d.jpg&quot;</span> % i, <span class="string">&quot;wb&quot;</span>).write(urllib.urlopen(url).read())</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>然后适当处理图片将其二值化，这里可以利用我前面一篇文章里面的算法（python图像处理之二值去噪）代码不罗列了，处理之后会得到这样的效果</p>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/2.jpg" alt="2"></p>
-<p>然后分割字符，这里利用PIL中图像分割的一块</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os ,Image</span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="built_in">dir</span>=<span class="string">&quot;./code/&quot;</span></span><br><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(<span class="built_in">dir</span>):</span><br><span class="line">    <span class="keyword">if</span> f.endswith(<span class="string">&quot;.jpg&quot;</span>):</span><br><span class="line">	img = Image.<span class="built_in">open</span>(<span class="built_in">dir</span>+f)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):  </span><br><span class="line">	    x = <span class="number">7</span> + i*<span class="number">13</span>  </span><br><span class="line">	    y = <span class="number">3</span>  </span><br><span class="line">	    img.crop((x, y, x+<span class="number">9</span>, y+<span class="number">13</span>)).save(<span class="string">&quot;font/%d.jpg&quot;</span> % j)  </span><br><span class="line">	    <span class="built_in">print</span> <span class="string">&quot;j=&quot;</span>,j  </span><br><span class="line">	    j += <span class="number">1</span>  </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-4154.png" alt="3"></p>
-<p>手工从其中选出比较完整的一套字模，如图</p>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-4314.png" alt="4"></p>
-<p>这样我们一个字库就完成了，在来谈谈匹配算法，相似度匹配，我们马上想法哦了异或算法，即把不同的去出来，然后进行一个计数，不同的点越少，相似读越高，例如这样一个图</p>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-4539.png" alt="5"></p>
-<p>进行异或运算,得到</p>
-<p><img src="https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-4547.png" alt="6"></p>
-<p>在PIL中实现如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> yi <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">13</span>):</span><br><span class="line">    <span class="keyword">for</span> xi <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">	<span class="keyword">if</span> mod[<span class="number">1</span>].getpixel((xi, yi)) != target.getpixel((xi, yi)):</span><br><span class="line">	    diffs += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>总结一下前面的步骤，我们来看看完整代码</p>
-<pre><code class="python">#!/usr/bin/env python
-# −*− coding: UTF−8 −*−
-import os, Image
-
-def binary(f):
-    img = Image.open(f)
-    #img = img.convert(&#39;1&#39;)
-    pixdata = img.load()
-    for y in xrange(img.size[1]):
-    for x in xrange(img.size[0]):
-        if pixdata[x, y][0] &lt; 90:
-            pixdata[x, y] = (0, 0, 0, 255)
-    for y in xrange(img.size[1]):
-    for x in xrange(img.size[0]):
-        if pixdata[x, y][1] &lt; 136:
-            pixdata[x, y] = (0, 0, 0, 255)
-    for y in xrange(img.size[1]):
-    for x in xrange(img.size[0]):
-        if pixdata[x, y][2] &gt; 0:
-            pixdata[x, y] = (255, 255, 255, 255)
-    return img
-
-
-def division(img):
-    font=[]
-    for i in range(4):
-    x=7+i*13
-    y=3
-    font.append(img.crop((x,y,x+9,y+13)))
-    return font
-
-def recognize(img):
-    fontMods = []
-    for i in range(10):
-    fontMods.append((str(i), Image.open(&quot;./num/%d.bmp&quot; % i)))
-    result=&quot;&quot;
-    font=division(img)
-    for i in font:
-    target=i
-    points = []
-    for mod in fontMods:
-        diffs = 0
-        for yi in range(13):
-            for xi in range(9):
-                if mod[1].getpixel((xi, yi)) != target.getpixel((xi, yi)):
-                    diffs += 1
-        points.append((diffs, mod[0]))
-    points.sort()
-    result += points[0][1]
-    return result
-
-if __name__ == &#39;__main__&#39;:
-    codedir=&quot;./code/&quot;
-    for imgfile in os.listdir(codedir):
-    if imgfile.endswith(&quot;.jpg&quot;):
-        dir=&quot;./result/&quot;
-        img=binary(codedir+imgfile)
-        num=recognize(img)
-        dir += (num+&quot;.png&quot;)
-        print &quot;save to&quot;, dir
-        img.save(dir)
-
-
-```![7](https://jovesky-wordpress.stor.sinaapp.com/uploads/2012/10/DeepinScrot-5424.png)
-</code></pre>
 
       
     </div>
