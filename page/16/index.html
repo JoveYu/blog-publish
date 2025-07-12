@@ -122,13 +122,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -165,6 +165,91 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/sizeof%E5%92%8Cstrlen%E5%AF%B9%E6%AF%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/sizeof%E5%92%8Cstrlen%E5%AF%B9%E6%AF%94/" class="post-title-link" itemprop="url">sizeof和strlen对比</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 06:09:02" itemprop="dateCreated datePublished" datetime="2013-04-07T06:09:02+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>strlen()是用来求字符串长度的一个函数,sizeof()是用来求指定变量或者变量类型等所占内存大小的操作符。</p>
+<p>这两个虽然都是量取长度的，但有本质的不同我们通过几个例子来看看！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ss[]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(ss));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(*ss));</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>11    ss是数组，计算到’’一共10+1<br>1     *ss指第一个字符，所以为1  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* ss=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(ss));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(*ss));</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>4     ss是指向字符串常量的字符指针，长整形的，所以为4<br>1     *ss是第一个字符，为1  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ss[<span class="number">100</span>]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(ss));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">strlen</span>(ss));</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>100     ss再内存中规定的大小就是100<br>10      ss有10个字符，所以长度为10  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ss[<span class="number">100</span>]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">sizeof</span>(ss));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%dn&quot;</span>,<span class="built_in">strlen</span>(ss));</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>理论上第一个应该输出400     因为100长度再内存中占用100×4<br>第二个错误  strlen后只能接字符指针</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -870,98 +955,6 @@
 <p>玩笑而已。之所以这样是因为我都知道答案了，而且数据不多。</p>
 <p>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2346		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 256K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">2</span>)</span><br><span class="line">		cout&lt;&lt;<span class="number">10</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">4</span>)</span><br><span class="line">		cout&lt;&lt;<span class="number">670</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">6</span>)</span><br><span class="line">		cout&lt;&lt;<span class="number">55252</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">8</span>)</span><br><span class="line">		cout&lt;&lt;<span class="number">4816030</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">10</span>)</span><br><span class="line">		cout&lt;&lt;<span class="number">432457640</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202334%20Simple%20prefix%20compression%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%202334%20Simple%20prefix%20compression%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2334 Simple prefix compression C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 05:57:11" itemprop="dateCreated datePublished" datetime="2013-04-07T05:57:11+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2334">http://poj.org/problem?id=2334</a></p>
-<p>这个题，有人说是水题，其实不然，很有难度的。</p>
-<p>介绍下题目，一组字符串，可以压缩，比如</p>
-<blockquote>
-<p>abc<br>atest<br>atext  </p>
-</blockquote>
-<p>可以写为</p>
-<blockquote>
-<p>abc<br>1test<br>3xt  </p>
-</blockquote>
-<p>这样说就容易理解了，就是把与上个字符串相同的部分直接用数字表示，来节约位置，问压缩后用多少字符数（尽管多位数不是一个数，但是储存算一个单位）</p>
-<p>现开始理解错了题意，以为所有字符串公用同一个j，后来WA了好多次，才知道每一个j只与上一个字符串有关！</p>
-<p>介绍下我的算法，定义b和c两个字符串，每次c为上一个，b为新输入的字符串，然后依次扫描。有一点我觉得比较有意思的,我原来代码是</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(b);j++)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>代码中很明显可以看出，每一行使用的字符数，为字符串长-相同的长度+1.</p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2334		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 240K		Time: 94MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> t,i,j,temp,num=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> b[<span class="number">256</span>],c[<span class="number">256</span>];</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t;);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,c);</span><br><span class="line">	num+=<span class="built_in">strlen</span>(c);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,b);</span><br><span class="line">		temp=<span class="built_in">strlen</span>(b);</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;temp;j++)</span><br><span class="line">			<span class="keyword">if</span>(b[j]!=c[j])</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		num+=(<span class="built_in">strlen</span>(b)-j+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">strcpy</span>(c,b);</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

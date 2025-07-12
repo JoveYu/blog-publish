@@ -122,13 +122,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -165,6 +165,98 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202334%20Simple%20prefix%20compression%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%202334%20Simple%20prefix%20compression%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2334 Simple prefix compression C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 05:57:11" itemprop="dateCreated datePublished" datetime="2013-04-07T05:57:11+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2334">http://poj.org/problem?id=2334</a></p>
+<p>这个题，有人说是水题，其实不然，很有难度的。</p>
+<p>介绍下题目，一组字符串，可以压缩，比如</p>
+<blockquote>
+<p>abc<br>atest<br>atext  </p>
+</blockquote>
+<p>可以写为</p>
+<blockquote>
+<p>abc<br>1test<br>3xt  </p>
+</blockquote>
+<p>这样说就容易理解了，就是把与上个字符串相同的部分直接用数字表示，来节约位置，问压缩后用多少字符数（尽管多位数不是一个数，但是储存算一个单位）</p>
+<p>现开始理解错了题意，以为所有字符串公用同一个j，后来WA了好多次，才知道每一个j只与上一个字符串有关！</p>
+<p>介绍下我的算法，定义b和c两个字符串，每次c为上一个，b为新输入的字符串，然后依次扫描。有一点我觉得比较有意思的,我原来代码是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(b);j++)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代码中很明显可以看出，每一行使用的字符数，为字符串长-相同的长度+1.</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2334		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 240K		Time: 94MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> t,i,j,temp,num=<span class="number">0</span>;</span><br><span class="line">	<span class="type">char</span> b[<span class="number">256</span>],c[<span class="number">256</span>];</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t;);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,c);</span><br><span class="line">	num+=<span class="built_in">strlen</span>(c);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,b);</span><br><span class="line">		temp=<span class="built_in">strlen</span>(b);</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;temp;j++)</span><br><span class="line">			<span class="keyword">if</span>(b[j]!=c[j])</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		num+=(<span class="built_in">strlen</span>(b)-j+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">strcpy</span>(c,b);</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -878,90 +970,6 @@
 <p>算法转载自<a target="_blank" rel="noopener" href="http://hi.baidu.com/lewutian/blog/item/8184f3d9a23d932710df9b34.html">http://hi.baidu.com/lewutian/blog/item/8184f3d9a23d932710df9b34.html</a></p>
 <p>代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2234		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 240K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n,i,sum;</span><br><span class="line">	<span class="type">long</span> <span class="type">int</span> a[<span class="number">23</span>];</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">			cin&gt;&gt;a[i];</span><br><span class="line">		sum=a[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;n; i++)</span><br><span class="line">			sum=sum^a[i];</span><br><span class="line">		<span class="keyword">if</span>(sum==<span class="number">0</span>)</span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202232%20New%20Stone-Forfex-Cloth%20Game%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%202232%20New%20Stone-Forfex-Cloth%20Game%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2232 New Stone-Forfex-Cloth Game C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 05:36:24" itemprop="dateCreated datePublished" datetime="2013-04-07T05:36:24+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2232">http://poj.org/problem?id=2232</a></p>
-<p>一个新的石头剪刀布游戏，大概的玩法是，大家选择一个，然后坐成一圈，任意选择一个人，逆时针比较，输的淘汰，平局算这个人赢，问可能由多少人可以赢！</p>
-<p>算法不难，不是我子集想出来的，比如，由F C S那么这三个可以通过F可以让C先打败S在打败C，其他同理。</p>
-<p>如果却少一种，比如只有F C那么C必输，每一个F都可能赢，其他同理，</p>
-<p>如果缺少两种，都是一样的，那么谁都能赢！</p>
-<p>由于三种可以交换，我在判断是时候就用了个小技巧，没有一一判断，不过先开始没有加break，导致输出了三遍！</p>
-<p>题目不难，思路一说就简单的，</p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2232		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 256K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n,i,f,c,s;</span><br><span class="line">	<span class="type">char</span> a[<span class="number">1001</span>];</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n)</span><br><span class="line">	&#123;</span><br><span class="line">		f=<span class="number">0</span>;c=<span class="number">0</span>;s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin&gt;&gt;a[i];</span><br><span class="line">			<span class="keyword">switch</span>(a[i])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">&#x27;F&#x27;</span>:f++;<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:c++;<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">&#x27;S&#x27;</span>:s++;<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(f&amp;&amp;c;&amp;&amp;s;)</span><br><span class="line">			&#123;</span><br><span class="line">				cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;	</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f&amp;&amp;c;==<span class="number">0</span>&amp;&amp;s;==<span class="number">0</span>)</span><br><span class="line">				cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(f&amp;&amp;c;&amp;&amp;s;==<span class="number">0</span>)</span><br><span class="line">				cout&lt;&lt;f&lt;&lt;endl;</span><br><span class="line">			<span class="type">int</span> temp=f;</span><br><span class="line">			f=c;c=s;s=temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -122,13 +122,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -165,6 +165,85 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%201656%20Counting%20Black%20C++%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Jove">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jove's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/2013/04/POJ%201656%20Counting%20Black%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 1656 Counting Black C++版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2013-04-07 09:07:09" itemprop="dateCreated datePublished" datetime="2013-04-07T09:07:09+08:00">2013-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1656">http://poj.org/problem?id=1656</a></p>
+<p>每日一水，今天又是一水题，按照题目给的数据去填涂区域起始点为x，y，长度为l的正方形，最后问给出的区域有多少黑的？</p>
+<p>纯模拟，不说了！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 1656		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 288K		Time: 0MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span>	std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j,x,y,l,n,map[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line">	<span class="type">char</span> m[<span class="number">7</span>];</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">memset</span>(map,<span class="number">0</span>,<span class="built_in">sizeof</span>(map));</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;m&gt;&gt;x&gt;&gt;y&gt;&gt;l)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(m[<span class="number">0</span>]==<span class="string">&#x27;B&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(i=x;i&lt;x+l;i++)</span><br><span class="line">				<span class="keyword">for</span>(j=y;j&lt;y+l;j++)</span><br><span class="line">					map[i][j]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(m[<span class="number">0</span>]==<span class="string">&#x27;W&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(i=x;i&lt;x+l;i++)</span><br><span class="line">				<span class="keyword">for</span>(j=y;j&lt;y+l;j++)</span><br><span class="line">					map[i][j]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(m[<span class="number">0</span>]==<span class="string">&#x27;T&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(i=x;i&lt;x+l;i++)</span><br><span class="line">				<span class="keyword">for</span>(j=y;j&lt;y+l;j++)</span><br><span class="line">					<span class="keyword">if</span>(map[i][j]==<span class="number">1</span>)</span><br><span class="line">						count++;</span><br><span class="line">			cout&lt;&lt;count&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -875,86 +954,6 @@
 <p>题目给出大量的字典数据，然后在一空行后开始查询，要是用c语言就麻烦点，我偷了点懒，用STL的map做的，对于这样的一一对应的关系map还是很好用的，只是听说，在时间上会长点</p>
 <p>思路就不解释了，上代码</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2503		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 10516K		Time: 1125MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	map &lt;string,string&gt;mymap;</span><br><span class="line">	string line;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">getline</span>(cin,line))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(line.<span class="built_in">length</span>()==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		string a=<span class="string">&quot;&quot;</span>,b=<span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="type">bool</span> flag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i=<span class="number">0</span>;i&lt;line.<span class="built_in">length</span>();i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(line[i]==<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">				flag=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(flag)</span><br><span class="line">					b+=line[i];</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					a+=line[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		mymap[b]=a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;line)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(mymap[line].<span class="built_in">length</span>())</span><br><span class="line">			cout&lt;&lt;mymap[line]&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;eh&quot;</span>&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.jove.im/post/2013/04/POJ%202533%20Longest%20Ordered%20Subsequence%20C++%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jove">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Jove's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2013/04/POJ%202533%20Longest%20Ordered%20Subsequence%20C++%E7%89%88/" class="post-title-link" itemprop="url">POJ 2533 Longest Ordered Subsequence C++版</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2013-04-07 08:54:24" itemprop="dateCreated datePublished" datetime="2013-04-07T08:54:24+08:00">2013-04-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-03-12 11:52:03" itemprop="dateModified" datetime="2022-03-12T11:52:03+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=1079">http://poj.org/problem?id=1079</a></p>
-<p>最长上升子串，利用动态规划解题。</p>
-<p>对于给定数列E，元素个数为n,最长上升子序列Q满足对任意1&lt;&#x3D;i&lt;j&lt;&#x3D;n，有Q[i]&lt;Q[j]，且E[i]&lt;E[j]。<br>容易得出O(n^2)的DP递推公式：<br>D[i]&#x3D;max{D[j]}+1;(1&lt;&#x3D;j&lt;i且E[j]&lt;E[i])<br>D[i]为以元素i结尾的最长子序列个数。<br>这样经过两重循环一次遍历可以得到最长上升子序列。  </p>
-<p>代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Problem: 2533		User: awq123</span></span><br><span class="line"><span class="comment">**Memory: 268K		Time: 32MS</span></span><br><span class="line"><span class="comment">**Language: C++		Result: Accepted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,j,t,d[<span class="number">1005</span>],dp[<span class="number">1005</span>];</span><br><span class="line">	cin&gt;&gt;t;</span><br><span class="line">	<span class="type">int</span> max=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;d[i];</span><br><span class="line">		dp[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(d[j]&lt;d[i]&amp;&amp;dp;[i]&lt;dp[j]+<span class="number">1</span>)</span><br><span class="line">				dp[i]=dp[j]+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(max&lt;dp[i])</span><br><span class="line">			max=dp[i];</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;max&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
