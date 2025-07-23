@@ -27,7 +27,7 @@
 <meta property="og:description" content="起因我的网络加速方案用了很多年，虽然更换了几轮，整体来说都是围绕全自动国内外透明代理的方案，上一个方案是使用本地客户端透明代理，配合iptables实现自动国内外分流，使用起来并没有什么问题，非常完美。前段时间调整方案all in wg，所有设备都使用WG连接到家里，然后分流出国。 目前设备连接上WG后，由于wg配置文件无法使用复杂路由表，设备只能使用全局代理，确实能实现国内外分流，但是这样国内流">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-21T03:17:41.000Z">
-<meta property="article:modified_time" content="2025-02-21T04:40:42.307Z">
+<meta property="article:modified_time" content="2025-07-23T14:39:34.908Z">
 <meta property="article:author" content="Jove">
 <meta property="article:tag" content="wireguard">
 <meta property="article:tag" content="network">
@@ -115,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%A0%94"><span class="nav-number">3.</span> <span class="nav-text">调研</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%A0%94"><span class="nav-number">3.</span> <span class="nav-text">调研</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,9 +211,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-02-21 11:17:41 / 修改时间：12:40:42" itemprop="dateCreated datePublished" datetime="2025-02-21T11:17:41+08:00">2025-02-21</time>
+      <time title="创建时间：2025-02-21 11:17:41" itemprop="dateCreated datePublished" datetime="2025-02-21T11:17:41+08:00">2025-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-23 22:39:34" itemprop="dateModified" datetime="2025-07-23T22:39:34+08:00">2025-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,11 +272,14 @@
 <p>那么我需要做的就是把国内路由打上标记。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>尝试使用iptables配合ipset匹配chnroute后，打上标记，规则如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t mangle -A PREROUTING -m <span class="built_in">set</span> --match-set chnroute dst -j MARK --set-xmark 0xca6c</span><br><span class="line">iptables -t mangle -A OUTPUT -m <span class="built_in">set</span> --match-set chnroute dst -j MARK --set-xmark 0xca6c</span><br><span class="line">iptables -t nat -A POSTROUTING -m mark --mark 0xca6c -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
 <p>同理ipv6的规则为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip6tables -t mangle -A PREROUTING -m <span class="built_in">set</span> --match-set chnroute6 dst -j MARK --set-xmark 0xca6c</span><br><span class="line">ip6tables -t mangle -A OUTPUT -m <span class="built_in">set</span> --match-set chnroute6 dst -j MARK --set-xmark 0xca6c</span><br><span class="line">ip6tables -t nat -A POSTROUTING -m mark --mark 0xca6c -j MASQUERADE</span><br></pre></td></tr></table></figure>
 
 <p>最终效果非常好，可以通过ipset中的chnroute和chnroute6两个表调整动态调整分流策略，并且路由表干净，笔记本更换网络后无须操作自动生效。</p>
 <p>需要注意的是，这个方案只能实现ip层面的分流，还需要配合一个无污染的DNS，我是直接使用wireguard服务端的DNS。</p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>补充nftables实现的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">table inet wg &#123;</span><br><span class="line">    set chnroute &#123;</span><br><span class="line">        type ipv4_addr</span><br><span class="line">        flags interval</span><br><span class="line">        elements = &#123;</span><br><span class="line">            123.123.123.0/24</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    set chnroute6 &#123;</span><br><span class="line">        type ipv6_addr</span><br><span class="line">        flags interval</span><br><span class="line">        elements = &#123;</span><br><span class="line">            240f:c000::/24</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    chain mark_chn &#123;</span><br><span class="line">        type filter hook prerouting priority mangle; policy accept;</span><br><span class="line">        ip   daddr @chnroute   meta mark set 0x0000ca6c</span><br><span class="line">        ip6  daddr @chnroute6  meta mark set 0x0000ca6c</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    chain mark_chn_out &#123;</span><br><span class="line">        type route hook output priority mangle; policy accept;</span><br><span class="line">        ip   daddr @chnroute   meta mark set 0x0000ca6c</span><br><span class="line">        ip6  daddr @chnroute6  meta mark set 0x0000ca6c</span><br><span class="line">    &#125;</span><br><span class="line">    chain masq_chn &#123;</span><br><span class="line">        type nat hook postrouting priority srcnat; policy accept;</span><br><span class="line">        meta mark 0x0000ca6c masquerade</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
